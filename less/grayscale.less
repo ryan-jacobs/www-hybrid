@@ -98,7 +98,7 @@ a {
             &.active {
                 outline: none;
                 a {
-                    background-color: fade(white, 30%);
+                    background-color: fade(@primary, 90%);
                     &:hover {
                         color: white;
                     }
@@ -239,9 +239,9 @@ a {
 .download-section {
     width: 100%;
     padding: 50px 0;
-    color: white;
-    background: url(../img/downloads-bg.jpg) no-repeat center center scroll;
-    background-color: black;
+    color: #000;
+    // background: url(../img/downloads-bg.jpg) no-repeat center center scroll;
+    background-color: #fff;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
@@ -338,4 +338,59 @@ img::-moz-selection {
 
 body {
     webkit-tap-highlight-color: fade(white, 20%);
+}
+
+
+// Center tabs
+.nav-tabs > li {
+  float:none;
+  display:inline-block;
+  *display:inline; /* ie7 fix */
+   zoom:1; /* hasLayout ie7 trigger */
+}
+.nav-tabs {
+  text-align:center;
+  font-family: "Montserrat","Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+
+
+.nav-tabs {
+  border-bottom: 1px solid #000;
+  text-align: center;
+  margin-bottom: 50px;
+}
+.nav-tabs > li.active > a,
+.nav-tabs > li.active > a:focus,
+.nav-tabs > li.active > a:hover {
+  border-width: 0;
+}
+.nav-tabs > li > a {
+  border: none;
+  color: #000;
+  text-transform: uppercase;
+}
+.nav-tabs > li.active > a,
+.nav-tabs > li > a:hover { 
+  border: none;
+  color: @primary !important;
+  background: transparent !important;
+}
+.nav-tabs > li > a::after {
+  content: "";
+  background: @primary;
+  height: 5px;
+  position: absolute;
+  width: 100%;
+  left: 0px;
+  bottom: -1px;
+  transition: all 250ms ease 0s; transform: scale(0);
+}
+.nav-tabs > li.active > a::after,
+.nav-tabs > li:hover > a::after {
+  transform: scale(1);
+}
+.tab-nav > li > a::after {
+  background: #21527d none repeat scroll 0% 0%;
+  color: #fff;
 }
