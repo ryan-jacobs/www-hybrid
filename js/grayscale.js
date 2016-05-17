@@ -185,3 +185,34 @@ function init() {
         icon: image
     });
 }
+
+
+// Custom additions.
+$(document).ready(function() { 
+  // Manually launch the fancybox with our own click event so that we can ensure
+  // it's only triggered on large-width breakpoints.
+  $(".fancybox").click(function() {
+    // Make sure that our test div, which has classes to tie its visibility to
+    // specific bootstrap breakpoints, is visible.
+    if (!$('#desktopTest').is(':hidden')) {
+      var href = $(this).attr('href');
+      $.fancybox.open(
+        [{
+          href: href,
+          type: 'iframe',
+        },
+        ], {
+          padding: 0,
+          width: "90%",
+          height: "90%",
+          helpers: {
+            overlay: {
+              locked: false
+            }
+          }
+        }
+      );
+      return false;
+    }
+  });
+});

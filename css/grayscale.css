@@ -350,8 +350,7 @@ body {
 .nav-tabs > li.active > a,
 .nav-tabs > li.active > a:focus,
 .nav-tabs > li.active > a:hover {
-  border: none !important;
-  border-width: 0 !important;
+  rder-width: 0 !important;
 }
 .container-dark .nav-tabs {
   border-bottom: 1px solid #fff;
