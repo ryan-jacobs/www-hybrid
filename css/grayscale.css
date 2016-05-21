@@ -46,6 +46,7 @@ a:focus {
 }
 .light {
   font-weight: 400;
+  font-size: 80%;
 }
 .navbar-custom {
   margin-bottom: 0;
@@ -68,6 +69,12 @@ a:focus {
 }
 .navbar-custom .navbar-brand:focus {
   outline: none;
+}
+.navbar-custom .navbar-brand i {
+  visibility: hidden;
+  color: #ff6b14;
+  opacity: 0;
+  transition: visibility 1s, opacity 1s;
 }
 .navbar-custom a {
   color: white;
@@ -111,6 +118,10 @@ a:focus {
     background: black;
     border-bottom: 1px solid rgba(255, 255, 255, 0.3);
   }
+  .navbar-custom.top-nav-collapse .navbar-brand i {
+    visibility: visible;
+    opacity: 1;
+  }
 }
 .intro {
   display: table;
@@ -119,7 +130,7 @@ a:focus {
   padding: 100px 0;
   text-align: center;
   color: white;
-  background: url(../img/intro-bg.jpg) no-repeat bottom center scroll;
+  background-image: linear-gradient(rgba(0, 0, 0, 0), #000000), url(../img/threerock.jpg);
   background-color: black;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -129,6 +140,15 @@ a:focus {
 .intro .intro-body {
   display: table-cell;
   vertical-align: middle;
+}
+@media (min-width: 768px) {
+  .intro .intro-body {
+    display: block;
+    position: absolute;
+    bottom: 10%;
+    left: 0;
+    right: 0;
+  }
 }
 .intro .intro-body .brand-heading {
   font-size: 40px;
@@ -165,8 +185,8 @@ a:focus {
 .btn-circle:hover,
 .btn-circle:focus {
   outline: none;
-  color: white;
-  background: rgba(255, 255, 255, 0.25);
+  color: #fff;
+  background: rgba(224, 83, 0, 0.6);
 }
 .btn-circle i.animated {
   -webkit-transition-property: -webkit-transform;
@@ -221,6 +241,7 @@ a:focus {
   background-color: #fff;
   background-image: url("../img/ecailles.png");
   background-repeat: repeat !important;
+  background-attachment: fixed;
 }
 .dark-section {
   width: 100%;
