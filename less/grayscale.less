@@ -26,7 +26,7 @@ p {
   margin: 0 0 25px;
   font-size: 18px;
   line-height: 1.5;
-  @media(min-width:768px) {
+  @media(min-width: @mobile-break) {
     margin: 0 0 35px;
     font-size: 20px;
     line-height: 1.6;
@@ -41,13 +41,36 @@ a {
   &:hover,
   &:focus {
     text-decoration: none;
-    color: darken(@primary,20%);
+    color: darken(@primary, 20%);
   }
 }
-
 .light {
   font-weight: 400;
   font-size: 80%;
+}
+.very-light {
+  font-weight: 200;
+  font-size: 80%;
+  color: darken(#fff, 30%);
+}
+
+.content-section {
+  width: 100%;
+  padding: 100px 0px;
+  @media(min-width: @mobile-break) {
+    padding: 150px 0px;
+  }
+}
+.light-section {
+  color: #000;
+  background-color: #fff;
+  background-image: url("../img/subtle_bg/ecailles.png");
+  background-repeat: repeat !important;
+  background-attachment: fixed;
+}
+.dark-section {
+  color: #fff;
+  background-color: #000;
 }
 
 .navbar-custom {
@@ -107,7 +130,10 @@ a {
       }
     }
   }
-  @media(min-width:768px) {
+  &.top-nav-collapse .navbar-brand i {
+    opacity: 1;
+  }
+  @media(min-width: @mobile-break) {
     padding: 20px 0;
     border-bottom: none;
     letter-spacing: 1px;
@@ -119,9 +145,6 @@ a {
       padding: 0;
       background: black;
       border-bottom: 1px solid fade(white, 30%);
-      .navbar-brand i {
-        opacity: 1;
-      }
     }
   }
 }
@@ -129,31 +152,23 @@ a {
 .intro {
   display: table;
   width: 100%;
-  height: auto;
+  height: 100%;
   padding: 100px 0;
   text-align: center;
   color: white;
-  // text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
-  // background: url(../img/P1010660.jpg) no-repeat bottom center scroll;
-  background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 1)), url(../img/threerock.jpg);
-  // background-attachment: fixed;
-  background-color: black;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  background-size: cover;
-  -o-background-size: cover;
-  .intro-inner {
-    //padding: 20px;
-    //background-color: rgba(0,0,0,0.3);
-  }
+  background-color: #000;
+  background-image: url("../img/subtle_bg/real_cf.png");
+  background-repeat: repeat !important;
+  background-attachment: fixed;
+  // box-shadow: inset 0px -30px 20px #000;
   .intro-body {
     display: table-cell;
     vertical-align: middle;
     transition: opacity 1s;
-    @media(min-width:768px) {
+    @media(min-width: @mobile-break) {
       display: block;
       position: absolute;
-      bottom: 10%;
+      bottom: 40%;
       left: 0;
       right: 0;
     }
@@ -164,8 +179,15 @@ a {
       font-size: 18px;
     }
   }
-  @media(min-width:768px) {
-    height: 100%;
+  .intro-photo-caption {
+    display: none;
+  }
+  @media(min-width: @mobile-break) {
+    background: url(../img/P1020492.jpg) no-repeat bottom center scroll;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
     padding: 0;
     .intro-body {
       .brand-heading {
@@ -174,6 +196,14 @@ a {
       .intro-text {
         font-size: 26px;
       }
+    }
+    .intro-photo-caption {
+      padding: 15px;
+      display: block;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      margin: 0;
     }
   }
 }
@@ -216,61 +246,6 @@ a {
       -webkit-animation-timing-function: linear;
       -moz-animation-timing-function: linear;
     }
-  }
-}
-@-webkit-keyframes pulse {
-  0 {
-    -webkit-transform: scale(1);
-    transform: scale(1);
-  }
-  50% {
-    -webkit-transform: scale(1.2);
-    transform: scale(1.2);
-  }
-  100% {
-    -webkit-transform: scale(1);
-    transform: scale(1);
-  }
-}
-@-moz-keyframes pulse {
-    0 {
-      -moz-transform: scale(1);
-      transform: scale(1);
-    }
-    50% {
-      -moz-transform: scale(1.2);
-      transform: scale(1.2);
-    }
-    100% {
-      -moz-transform: scale(1);
-      transform: scale(1);
-    }
-}
-
-.content-section {
-  padding-top: 100px;
-}
-
-.light-section {
-  width: 100%;
-  color: #000;
-  background-color: #fff;
-  background-image: url("../img/ecailles.png");
-  background-repeat: repeat !important;
-  background-attachment: fixed;
-}
-.dark-section {
-  width: 100%;
-  color: #fff;
-  background-color: #000;
-}
-
-.content-section {
-  padding-top: 50px;
-  padding-bottom: 50px;
-  @media(min-width:767px) {
-    padding-top: 100px;
-    padding-bottom: 100px;
   }
 }
 
@@ -403,3 +378,33 @@ body {
 	width	: 100%;
 	height	: 500px;
 }	
+
+// Pulse animations (mainly for buttons).
+@-webkit-keyframes pulse {
+  0 {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+  50% {
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
+  }
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+@-moz-keyframes pulse {
+    0 {
+      -moz-transform: scale(1);
+      transform: scale(1);
+    }
+    50% {
+      -moz-transform: scale(1.2);
+      transform: scale(1.2);
+    }
+    100% {
+      -moz-transform: scale(1);
+      transform: scale(1);
+    }
+}

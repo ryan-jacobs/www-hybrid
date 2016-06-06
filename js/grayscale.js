@@ -1,26 +1,34 @@
-/*!
- * Start Bootstrap - Grayscale Bootstrap Theme (http://startbootstrap.com)
- * Code licensed under the Apache License v2.0.
- * For details, see http://www.apache.org/licenses/LICENSE-2.0.
- */
-
-// jQuery to collapse the navbar on scroll
+// Collapse the navbar on scroll
 function collapseNavbar() {
   if ($(".navbar").offset().top > 50) {
     $(".navbar-fixed-top").addClass("top-nav-collapse");
-    // alert('here');
-    //$("header.intro a.btn").css('visibility', 'hidden');
-    $("header .intro-body").css('opacity', '0');
   }
   else {
     $(".navbar-fixed-top").removeClass("top-nav-collapse");
-    //$("header.intro a.btn").css('visibility', 'visible');
-    $("header .intro-body").css('opacity', '1');
   }
 }
-
 $(window).scroll(collapseNavbar);
 $(document).ready(collapseNavbar);
+
+// The intro height is set to 100% in CSS. This can cause some "jumpy" issus for
+// browsers that dynamically add/remove navigation bars that change the window
+// height (based on scroll speed and position - e.g. Android Firefox). This
+// seems to be due to conflicts with the fixed navbar, and can be eliminated by
+// ensuring that the intro div has a specific px (non %) height.
+$(function() {
+  $('header.intro').css('height', $(window).height());
+});
+// Since we are setting an specific px height for the intro, we also need to
+// recalculate it during a window resize, but only if the aspect ratio changes
+// (triggering this logic on a simple height change only propogates the initial
+// problem).
+var width = $(window).width();
+$(window).resize(function() {
+  if ($(this).width() != width) {
+    width = $(this).width();
+    $('header.intro').css('height', $(window).height());
+  }
+});
 
 // jQuery for page scrolling feature - requires jQuery Easing plugin
 $(function() {
@@ -51,7 +59,7 @@ $(function() {
   $(".fancybox").click(function() {
     // Make sure that our test div, which has classes to tie its visibility to
     // specific bootstrap breakpoints, is visible.
-    if (!$('#desktopTest').is(':hidden')) {
+    if (!isMobile()) {
       var href = $(this).attr('href');
       $.fancybox.open(
         [{
@@ -74,17 +82,21 @@ $(function() {
   });
 });
 
+// Helper to test for width <= mobile breakpoint.
+function isMobile() {
+  return $('#mobileTest').is(':hidden');
+}
 
 // Special handeling for tabs associated with fragments.
 $(function(){
   // If we load a page with a fragment representing a tab, open that tab and
   // scroll to the section it's in.
   var hash = window.location.hash;
-  if (hash && $('ul.nav a[href="' + hash + '"]').length) {
-    var element = $('ul.nav a[href="' + hash + '"]');
+  if (hash && $('ul.nav-tabs a[href="' + hash + '"]').length) {
+    var element = $('ul.nav-tabs a[href="' + hash + '"]');
     var jumpto = element.closest('section');
     element.tab('show')
-    $('html,body').animate({scrollTop: jumpto.offset().top - $('nav .navbar-header').innerHeight()});
+    $('html,body').animate({scrollTop: jumpto.offset().top});
   }
   // If a user clicks on a tab be sure to set the hash in the URL without
   // triggering any scrolling.
@@ -96,13 +108,10 @@ $(function(){
   });
 });
 
-
 var map = AmCharts.makeChart( "chartdiv", {
   type: "map",
   "theme": "light",
-
   colorSteps: 10,
-
   dataProvider: {
     map: "usaLow",
     areas: [ {
@@ -276,10 +285,9 @@ var map = AmCharts.makeChart( "chartdiv", {
 
 } );
 
-
 map.addListener("clickMapObject", function (event) {
   var href = event.mapObject.href;
-  if (!$('#desktopTest').is(':hidden')) {
+  if (!isMobile()) {
     $.fancybox.open(
       [{
         href: href,

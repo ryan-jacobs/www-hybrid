@@ -48,6 +48,31 @@ a:focus {
   font-weight: 400;
   font-size: 80%;
 }
+.very-light {
+  font-weight: 200;
+  font-size: 80%;
+  color: #b3b3b3;
+}
+.content-section {
+  width: 100%;
+  padding: 100px 0px;
+}
+@media (min-width: 768px) {
+  .content-section {
+    padding: 150px 0px;
+  }
+}
+.light-section {
+  color: #000;
+  background-color: #fff;
+  background-image: url("../img/subtle_bg/ecailles.png");
+  background-repeat: repeat !important;
+  background-attachment: fixed;
+}
+.dark-section {
+  color: #fff;
+  background-color: #000;
+}
 .navbar-custom {
   margin-bottom: 0;
   border-bottom: 1px solid rgba(255, 255, 255, 0.3);
@@ -102,6 +127,9 @@ a:focus {
 .navbar-custom .nav li.active a:hover {
   color: white;
 }
+.navbar-custom.top-nav-collapse .navbar-brand i {
+  opacity: 1;
+}
 @media (min-width: 768px) {
   .navbar-custom {
     padding: 20px 0;
@@ -117,23 +145,18 @@ a:focus {
     background: black;
     border-bottom: 1px solid rgba(255, 255, 255, 0.3);
   }
-  .navbar-custom.top-nav-collapse .navbar-brand i {
-    opacity: 1;
-  }
 }
 .intro {
   display: table;
   width: 100%;
-  height: auto;
+  height: 100%;
   padding: 100px 0;
   text-align: center;
   color: white;
-  background-image: linear-gradient(rgba(0, 0, 0, 0), #000000), url(../img/threerock.jpg);
-  background-color: black;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  background-size: cover;
-  -o-background-size: cover;
+  background-color: #000;
+  background-image: url("../img/subtle_bg/real_cf.png");
+  background-repeat: repeat !important;
+  background-attachment: fixed;
 }
 .intro .intro-body {
   display: table-cell;
@@ -144,7 +167,7 @@ a:focus {
   .intro .intro-body {
     display: block;
     position: absolute;
-    bottom: 10%;
+    bottom: 40%;
     left: 0;
     right: 0;
   }
@@ -155,9 +178,16 @@ a:focus {
 .intro .intro-body .intro-text {
   font-size: 18px;
 }
+.intro .intro-photo-caption {
+  display: none;
+}
 @media (min-width: 768px) {
   .intro {
-    height: 100%;
+    background: url(../img/P1020492.jpg) no-repeat bottom center scroll;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
     padding: 0;
   }
   .intro .intro-body .brand-heading {
@@ -165,6 +195,14 @@ a:focus {
   }
   .intro .intro-body .intro-text {
     font-size: 26px;
+  }
+  .intro .intro-photo-caption {
+    padding: 15px;
+    display: block;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin: 0;
   }
 }
 .btn-circle {
@@ -202,60 +240,6 @@ a:focus {
   -moz-animation-iteration-count: infinite;
   -webkit-animation-timing-function: linear;
   -moz-animation-timing-function: linear;
-}
-@-webkit-keyframes pulse {
-  0 {
-    -webkit-transform: scale(1);
-    transform: scale(1);
-  }
-  50% {
-    -webkit-transform: scale(1.2);
-    transform: scale(1.2);
-  }
-  100% {
-    -webkit-transform: scale(1);
-    transform: scale(1);
-  }
-}
-@-moz-keyframes pulse {
-  0 {
-    -moz-transform: scale(1);
-    transform: scale(1);
-  }
-  50% {
-    -moz-transform: scale(1.2);
-    transform: scale(1.2);
-  }
-  100% {
-    -moz-transform: scale(1);
-    transform: scale(1);
-  }
-}
-.content-section {
-  padding-top: 100px;
-}
-.light-section {
-  width: 100%;
-  color: #000;
-  background-color: #fff;
-  background-image: url("../img/ecailles.png");
-  background-repeat: repeat !important;
-  background-attachment: fixed;
-}
-.dark-section {
-  width: 100%;
-  color: #fff;
-  background-color: #000;
-}
-.content-section {
-  padding-top: 50px;
-  padding-bottom: 50px;
-}
-@media (min-width: 767px) {
-  .content-section {
-    padding-top: 100px;
-    padding-bottom: 100px;
-  }
 }
 .btn {
   text-transform: uppercase;
@@ -376,5 +360,33 @@ body {
 #chartdiv {
   width: 100%;
   height: 500px;
+}
+@-webkit-keyframes pulse {
+  0 {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+  50% {
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
+  }
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+@-moz-keyframes pulse {
+  0 {
+    -moz-transform: scale(1);
+    transform: scale(1);
+  }
+  50% {
+    -moz-transform: scale(1.2);
+    transform: scale(1.2);
+  }
+  100% {
+    -moz-transform: scale(1);
+    transform: scale(1);
+  }
 }
 /*# sourceMappingURL=grayscale.css.map */
