@@ -168,7 +168,7 @@ a {
     @media(min-width: @mobile-break) {
       display: block;
       position: absolute;
-      bottom: 40%;
+      bottom: 5%;
       left: 0;
       right: 0;
     }
@@ -183,6 +183,7 @@ a {
     display: none;
   }
   @media(min-width: @mobile-break) {
+    box-shadow: inset 0px -300px 150px 0px rgba(0,0,0,0.8);
     background: url(../img/P1020492.jpg) no-repeat bottom center scroll;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -190,6 +191,11 @@ a {
     -o-background-size: cover;
     padding: 0;
     .intro-body {
+      .intro-inner {
+        //box-shadow: 0px 0px 50px 50px rgba(0,0,0,0.3);
+        //background-color: rgba(0,0,0,0.3);
+        //border-radius: 10px;
+      }
       .brand-heading {
         font-size: 100px;
       }
@@ -209,7 +215,6 @@ a {
 }
 
 .btn-circle {
-  // box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
   width: 70px;
   height: 70px;
   margin: 15px 8px;
