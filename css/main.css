@@ -167,7 +167,7 @@ a:focus {
   .intro .intro-body {
     display: block;
     position: absolute;
-    bottom: 5%;
+    bottom: 55%;
     left: 0;
     right: 0;
   }
@@ -183,7 +183,7 @@ a:focus {
 }
 @media (min-width: 768px) {
   .intro {
-    box-shadow: inset 0px -300px 150px 0px rgba(0, 0, 0, 0.8);
+    box-shadow: inset 0px 100px 100px 0px rgba(0, 0, 0, 0.4);
     background: url(../img/P1020492.jpg) no-repeat bottom center scroll;
     -webkit-background-size: cover;
     -moz-background-size: cover;
