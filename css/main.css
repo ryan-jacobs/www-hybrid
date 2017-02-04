@@ -235,10 +235,10 @@ a:focus {
 .btn-circle:hover i.animated {
   -webkit-animation-name: pulse;
   -moz-animation-name: pulse;
-  -webkit-animation-duration: 1.5s;
-  -moz-animation-duration: 1.5s;
-  -webkit-animation-iteration-count: infinite;
-  -moz-animation-iteration-count: infinite;
+  -webkit-animation-duration: 0.2s;
+  -moz-animation-duration: 0.2s;
+  -webkit-animation-iteration-count: 1;
+  -moz-animation-iteration-count: 1;
   -webkit-animation-timing-function: linear;
   -moz-animation-timing-function: linear;
 }
@@ -246,10 +246,10 @@ a:focus {
   text-transform: uppercase;
   font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 400;
-  -webkit-transition: all 0.3s ease-in-out;
-  -moz-transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
   transition: all 0.3s ease-in-out;
-  border-radius: 0;
+  border-radius: 3px;
 }
 .btn-default {
   border: 1px solid #e05300;
@@ -260,7 +260,7 @@ a:focus {
 .btn-default:focus {
   border: 1px solid #e05300;
   outline: none;
-  color: black;
+  color: #fff;
   background-color: #e05300;
 }
 ul.banner-social-buttons {
@@ -329,12 +329,12 @@ body {
 .nav-tabs > li > a::after {
   content: "";
   background: #e05300;
-  height: 5px;
+  height: 4px;
   position: absolute;
   width: 100%;
   left: 0px;
   bottom: -1px;
-  transition: all 250ms ease 0s;
+  transition: all 100ms ease 0s;
   transform: scale(0);
 }
 .nav-tabs > li.active > a,

@@ -154,7 +154,7 @@ var map = AmCharts.makeChart( "chartdiv", {
       id: "US-IL",
       value: 12419293,
       selectable: true,
-      href: 'http://www.ryan-jacobs.net/photos/albums/Nature'
+      href: 'http://www.ryan-jacobs.net/photos/albums/Nature?this=that'
     }, {
       id: "US-IN",
       value: 6080485
