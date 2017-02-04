@@ -1,0 +1,8 @@
+name = "Revisioning Display"
+description = "Adjusts the way revisioning options appear when editing."
+core = 7.x
+
+dependencies[] = revisioning
+
+files[] = base.module
+files[] = base.install
