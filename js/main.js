@@ -70,6 +70,7 @@ $(function() {
           padding: 0,
           width: "90%",
           height: "90%",
+          autoSize : false,
           helpers: {
             overlay: {
               locked: false
