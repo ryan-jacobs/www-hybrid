@@ -1,0 +1,45 @@
+/* This file will hold styles for all layouts using the alpha grid (i.e. not the mobile layout). */
+
+
+/*----------------------------------------------------------------------------
+  Header and Menu Styles
+  ----------------------------------------------------------------------------*/
+/* Header Styles */
+#region-header-second {
+  display: block;
+}
+#region-header-first {
+  text-align: left;
+}
+#zone-header {
+  margin-top: 15px;
+}
+/* Hide the mobile menu */
+#block-local-helpers-local-helpers-jump-menu {
+  display: none;
+}
+#zone-menu {
+  min-height: 3em;
+}
+#region-menu {
+  text-align: left;
+}
+span.logo-sprite {
+  background-position: 0px -350px;
+  background-size: auto;
+  height: 150px;
+  width: 300px;
+  margin: 0px;
+}
+
+
+/*----------------------------------------------------------------------------
+  Content styls
+  ----------------------------------------------------------------------------*/
+/* Highlight show */
+.highlight-show-parent {
+  float: right;
+  margin: 0px 0px 20px 20px;
+  width: 60%;
+}
+

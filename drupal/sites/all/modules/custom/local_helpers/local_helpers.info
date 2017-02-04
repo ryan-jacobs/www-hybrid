@@ -1,0 +1,7 @@
+name = "Local Helpers"
+description = "Code for case-specific local customizations."
+package = Custom
+dependencies[] = jump_menu
+dependencies[] = tagadelic
+
+core = 7.x

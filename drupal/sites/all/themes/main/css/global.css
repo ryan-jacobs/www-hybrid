@@ -1,0 +1,717 @@
+/* This file will hold styles for the mobile version of your website (mobile first). */
+/* This also can include ANY global CSS that applies site-wide. Unless overwritten by a more specific style rule, CSS declarations in global.css will apply site-wide. */
+
+
+
+/*----------------------------------------------------------------------------
+  Overall layout
+  ----------------------------------------------------------------------------*/
+body {
+  background-color: #CCCCCC;
+  background-image: url("../images/page_bg.jpg");
+  background-repeat: no-repeat !important;
+  background-attachment: fixed;
+}
+body.content-only {
+  background-color: #fff;
+  background-image: url("../images/ecailles.png");
+  background-repeat: repeat !important;
+}
+body.content-only #page {
+  margin-top: 15px;
+}
+
+/**** Main layout "box" styles ****/
+.layered-box {
+  /* Set transparent background */
+  background: url(../images/trans_bg.png) 0 0 repeat;
+  /* Give radius */
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  -khtml-border-radius: 3px;
+  -webkit-background-clip: padding-box; 
+  -moz-background-clip:    padding; 
+  background-clip:         padding-box;
+  /* Set margin */
+  margin-bottom: 20px;
+  -moz-box-shadow:    1px 1px 2px 0px #444;
+  -webkit-box-shadow: 1px 1px 2px 0px #444;
+  box-shadow:         1px 1px 2px 0px #444;
+}
+/* Also, the first child of each box needs to have some padding applied to
+it. We can't apply this to the layered-box parent as responsive classes 
+assigned at that same level has special padding considerations that conflict.*/
+.layered-box .region-inner,
+#region-sidebar-first .layered-box .block-inner,
+#region-sidebar-second .layered-box .block-inner,
+#region-postscript-second .layered-box .block-inner,
+.layered-box .views-grid-item-inner {
+  padding: 20px;
+}
+/* Grid items are generally images that have no padding */
+.layered-box .views-grid-item-inner {
+  padding: 0px;
+}
+/* If a region is nested inside another layered box, then we don't want any
+floating or side padding */
+/*.nested-region {
+  float: none !important;
+} */
+.nested-region .region-inner {
+  padding-right: 40px;
+  padding-left: 0px;
+}
+/* Our preface second region is "nested" inside the content region so we need
+to remove its side margins */
+#region-preface-second {
+  margin-left: 0;
+  margin-right: 0;
+  float: none;
+  display: block;
+}
+/* Messages */
+#messages {
+  margin-bottom: 15px;
+}
+
+
+/*----------------------------------------------------------------------------
+  Views grid styles
+  ----------------------------------------------------------------------------*/
+
+/* Images span entire grid container so apply rounding corners there too */
+.views-grid-item-inner img {
+  /* Give radius */
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  -khtml-border-radius: 3px;
+  -webkit-background-clip: padding-box; 
+  -moz-background-clip:    padding; 
+  background-clip:         padding-box;
+}
+.views-grid-item-inner img:hover {
+  opacity:0.7;
+  filter:alpha(opacity=70);
+}
+/* The title overlays the image at the bottom */
+.views-grid-item-inner .grid-title {
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background: url(../images/trans_bg_dark.png) 0 0 repeat;
+  width: 100%;
+  -moz-border-radius: 0px 0px 3px 3px;
+  -webkit-border-radius: 0px 0px 3px 3px;
+  border-radius: 0px 0px 3px 3px;
+  -khtml-border-radius: 0px 0px 3px 3px;
+  -webkit-background-clip: padding-box; 
+  -moz-background-clip:    padding; 
+  background-clip:         padding-box;
+}
+#page .views-grid-item-inner .grid-title a {
+  margin: 10px 15px;
+  display: block;
+  color: #fff;
+  text-decoration: none;
+}
+/* For small width be sure container is no bigger than the image */
+.view-project-lists .views-grid-item {
+  max-width: 300px;
+}
+.view-galleries-index .views-grid-item {
+  max-width: 500px;
+}
+
+/* The pager styles for Omega need tweaking */
+.pager li.pager-first a, .pager li.pager-previous a, .pager li.pager-next a, .pager li.pager-last a {
+  width: 80px;
+}
+
+
+
+/*----------------------------------------------------------------------------
+  Header and Menu Styles
+  ----------------------------------------------------------------------------*/
+
+/* Top Header blocks */
+span.logo-sprite {
+  background-image: url("../images/logo.png");
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  display: block;
+  height: 75px;
+  width: 500px;
+  max-width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  margin: 10px auto 20px auto;
+}
+#region-header-second {
+  display: none;
+}
+#region-header-first {
+  text-align: center;
+}
+#page h1.hquote {
+  color: #EEEEEE;
+  text-align: center;
+  font-weight: normal;
+}
+#page h1.hquote a {
+  color: #CCCCCC;
+  text-decoration: underline;
+}
+
+/* Menu layout */
+/*  Set most content at z-index of 10 */
+section, footer {
+  z-index: 10;
+}
+/* Set Dynamic menu back above most content and position/style */
+#dyn-menu-back {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50px;
+  background: url(../images/trans_bg_dark.png);
+  z-index: 400;
+  border-bottom: 1px solid #bbb;
+  display: none;
+}
+/* Set menu itself above all */
+#region-menu {
+  z-index: 401;
+}
+
+/* Mobile menu */
+#region-menu {
+  text-align: center;
+}
+#block-local-helpers-local-helpers-jump-menu {
+  clear: both;
+}
+/* Allow center text alignment to work */
+ul#main-menu, #block-local-helpers-local-helpers-jump-menu .form-item-jump {
+  display: inline-block;
+}
+#zone-menu {
+  min-height: 6em;
+}
+
+
+
+/*----------------------------------------------------------------------------
+  Footer Styles
+  ----------------------------------------------------------------------------*/
+
+#region-footer-first {
+  margin-top: 30px;
+  text-align: center;
+  /*width: 66%;*/
+}
+#region-footer-first, #page #region-footer-first a:hover {
+  color: #fff;
+}
+#page #region-footer-first a {
+  color: #ECECF4;
+  text-decoration: underline;
+}
+
+
+
+
+/*----------------------------------------------------------------------------
+  Global typography
+  ----------------------------------------------------------------------------*/
+
+body {
+  font-size: 12px;
+  font-family: 'Droid Sans',Helvetica,Verdana,​Arial,​sans-serif;
+  color: #222;
+}
+h1 {
+  font-size: 225%;
+}
+h2, h2.node-title {
+  font-size: 175%;
+}
+h3 {
+  font-size: 125%;
+}
+h4 {
+  font-size: 100%;
+}
+h1, h2, h3, h4, h5 {
+  font-family: 'Didact Gothic',Georgia,'Times New Roman',serif;
+  font-weight: normal;
+  color: #5E3613;
+}
+p, li {
+  line-height: 1.7;
+}
+/* Tabs are special */
+#tabs li {
+  line-height: 1;
+}
+
+#page a {
+  color: #990A1B;
+  text-decoration: none;
+}
+#page a:hover {
+  color: #ce0d24;
+}
+#page a:visited {
+  /*color: #B76924;*/
+}
+#page a.active {
+  font-weight: bold;
+}
+article.node-project .field-label,
+span.summary-label {
+  font-weight: normal;
+  font-size: 130%;
+  color: #000;
+  font-variant: small-caps;
+}
+
+p.no-results {
+  font-weight: bold;
+  color: #ffffff;
+  background-color: #333333;
+  padding: 10px;
+}
+
+/* Juicebox specific typography */
+#page .juicebox-parent a {
+  text-decoration: underline;
+  color: #ffffff !important;
+}
+#page a.jb-splash-view-glry {
+  color: #ffffff !important;
+}
+
+
+/*----------------------------------------------------------------------------
+  Block styles
+  ----------------------------------------------------------------------------*/
+
+h2.block-title {
+  color: #000;
+  display: block;
+  width: 100%;
+  font-size: 130%;
+  font-variant: small-caps;
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 1em;
+}
+
+#region-content section.block-tagadelic {
+  margin-bottom: 3em;
+}
+
+#block-views-exp-project-lists-page .form-submit {
+  display: none;
+}
+#block-views-exp-project-lists-page input {
+  width: 100%;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  -khtml-border-radius: 3px;
+}
+
+/* Simplify all menu block bullets */
+.block-menu-block ul li {
+  list-style-image: none;
+  list-style-type: none;
+  margin: 0;
+}
+
+/* The project concepts block needs a bit of extra padding between items */
+#block-menu-block-4 li {
+  padding-bottom: 5px;
+}
+
+/* Landing pages use an h2 in the top preface and no other text, so we don't
+want any h2 padding there */
+#region-preface-first h2 {
+  margin-bottom: 0px;
+}
+
+
+/*----------------------------------------------------------------------------
+  Content styls
+  ----------------------------------------------------------------------------*/
+
+/* Breadcrumb styles */
+#block-delta-blocks-breadcrumb {
+  float: right;
+  width: 250px;
+  margin-top: 10px;
+  font-size: 80%;
+  text-align: right;
+}
+.section-crumb a {
+  background-color: transparent;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 8px;
+  font-size: 120%
+}
+.section-crumb a:hover {
+  background-color: #990a1b;
+  color: #fff !important;
+}
+/* Highlight show */
+.highlight-show-parent {
+  float: none;
+  height: 500px;
+  margin: 15px auto;
+  width: 95%;
+}
+/* General project field styles */
+article .field-name-field-project-what *,
+article .field-name-field-project-client *,
+article .field-name-field-project-employer *,
+article .field-name-field-project-roles-leader *,
+article .field-name-field-project-concepts-leader * {
+  display: inline;
+}
+article .field-name-field-project-what,
+article .field-name-field-project-client,
+article .field-name-field-project-employer,
+article .field-name-field-project-roles-leader,
+article .field-name-field-project-concepts-leader {
+  margin-bottom: 1em;
+}
+article .field-name-field-project-concepts,
+article .field-name-field-project-roles {
+  margin-left: 0em;
+  margin-bottom: 1em;
+}
+
+article .field-name-field-project-concepts .field-item {
+  /*display: block;
+  float: left;*/
+  padding: 5px;;
+}
+
+/* Views galleries that are in the main content are are generally unwrapped and
+require some padding at the bottom */
+.view-galleries .juicebox-parent {
+  padding-bottom: 20px;
+}
+
+
+
+/*----------------------------------------------------------------------------
+  Global image and sprite styles
+  ----------------------------------------------------------------------------*/
+
+/* Add basic responsiveness to images, etc. */
+img {
+  max-width: 100%;
+  height: auto;
+  width: auto;
+}
+/* Sprites */
+.sprite, .tax-icon {
+  background-image: url("../images/sprites.png");
+  background-repeat: no-repeat;
+  overflow: hidden;
+  white-space: nowrap;
+  display: inline-block;
+}
+.sprite.section-anchor {
+  width: 16px;
+  height: 16px;
+  background-position: 0px -150px;
+  margin: 0em 0.3em -0.3em 0em;
+}
+
+.tax-icon {
+  margin: 0.2em 0.2em -0.4em 0em;
+  width: 25px;
+  height: 25px;
+}
+ul li.tax-icon-wrap {
+  list-style-image: none;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+.tax-icon-9 { /* Drupal */
+  background-position: -450px 0px;
+}
+.tax-icon-10 { /* Lamp */
+  background-position: -50px 0px;
+}
+.tax-icon-22 { /* Dokuwiki */
+  background-position: -100px 0px;
+}
+.tax-icon-26 { /* Jamit */
+  background-position: -150px 0px;
+}
+.tax-icon-23 { /* Open Atrium */
+  background-position: -250px 0px;
+}
+.tax-icon-29 { /* Gmaps API */
+  background-position: -200px 0px;
+}
+.tax-icon-25 { /* Salesforce */
+  background-position: -300px 0px;
+}
+.tax-icon-24 { /* Wordpress */
+  background-position: -400px 0px;
+}
+.tax-icon-30 { /* Simpleviewer */
+  background-position: -350px 0px;
+}
+.tax-icon-31 { /* Juicebox */
+  background-position: -50px -50px;
+}
+.tax-icon-28 { /* Plugin Dev */
+  background-position: -0px -50px;
+}
+.tax-icon-33 { /* Responsive */
+  background-position: -100px -50px;
+}
+.tax-icon-27 { /* Photography */
+  background-position: -150px -50px;
+}
+.tax-icon-34 { /* SSO */
+  background-position: -200px -50px;
+}
+
+/* Also responsize movie embeds */
+.videoWrapper {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 */
+  padding-top: 25px;
+  height: 0;
+}
+.videoWrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+
+/*----------------------------------------------------------------------------
+  Artisteer styles from old theme
+  ----------------------------------------------------------------------------*/
+
+/* begin Menu */
+/* menu structure */
+
+#zone-menu {
+  margin-bottom: 10px;
+  font-size: 110%;
+  font-weight: bold;
+}
+
+.art-menu a, .art-menu a:link, .art-menu a:visited, .art-menu a:hover
+{
+	text-align:left;
+	text-decoration:none;
+	outline:none;
+	letter-spacing:normal;
+	word-spacing:normal;
+}
+
+.art-menu, .art-menu ul
+{
+	margin: 0;
+	padding: 0;
+	border: 0;
+	list-style-type: none;
+	display: block;
+}
+
+.art-menu li
+{
+	margin: 0;
+	padding: 0;
+	border: 0;
+	display: block;
+	float: left;
+	position: relative;
+	z-index: 5;
+	background:none;
+}
+
+.art-menu li:hover
+{
+	z-index: 10000;
+	white-space: normal;
+}
+
+.art-menu li li
+{
+	float: none;
+}
+
+.art-menu ul
+{
+	visibility: hidden;
+	position: absolute;
+	z-index: 10;
+	left: 0;
+	top: 0;
+	background:none;
+}
+
+.art-menu li:hover>ul
+{
+	visibility: visible;
+	top: 100%;
+}
+
+.art-menu li li:hover>ul
+{
+	top: 0;
+	left: 100%;
+}
+
+.art-menu, .art-menu ul
+{
+	min-height: 0;
+}
+
+.art-menu ul
+{
+	background-image: url(../images/spacer.gif);
+	padding: 10px 30px 30px 30px;
+	margin: -10px 0 0 -30px;
+}
+
+.art-menu ul ul
+{
+	padding: 30px 30px 30px 10px;
+	margin: -30px 0 0 -10px;
+}
+
+
+
+
+
+/* menu structure */
+
+.art-menu
+{
+	padding: 3px 5px 3px 5px;
+}
+
+.art-nav
+{
+	position: relative;
+	height: 34px;
+	z-index: 100;
+}
+
+
+/* end Menu */
+
+/* begin MenuItem */
+.art-menu ul li
+{
+	clear: both;
+}
+
+.art-menu a
+{
+	position:relative;
+	display: block;
+	overflow:hidden;
+	height: 28px;
+	cursor: pointer;
+	text-decoration: none;
+	margin-right: 4px;
+	margin-left: 4px;
+}
+
+
+.art-menu a .r, .art-menu a .l
+{
+	position:absolute;
+	display: block;
+	top:0;
+	z-index:-1;
+	height: 84px;
+	background-image: url('../images/MenuItem.png');
+}
+
+.art-menu a .l
+{
+	left:0;
+	right:6px;
+}
+
+.art-menu a .r
+{
+	width:412px;
+	right:0;
+	clip: rect(auto, auto, auto, 406px);
+}
+
+.art-menu a .t 
+{
+
+font-weight: normal;
+	color: #F2F2F8;
+	padding: 0 6px;
+	margin: 0 6px;
+	line-height: 28px;
+	text-align: center;
+}
+
+.art-menu a:hover .l, .art-menu a:hover .r
+{
+	top:-28px;
+}
+
+.art-menu li:hover>a .l, .art-menu li:hover>a .r
+{
+	top:-28px;
+}
+
+.art-menu li:hover a .l, .art-menu li:hover a .r
+{
+	top:-28px;
+}
+.art-menu a:hover .t
+{
+	color: #F0F0F0;
+}
+
+.art-menu li:hover a .t
+{
+	color: #F0F0F0;
+}
+
+.art-menu li:hover>a .t
+{
+	color: #F0F0F0;
+}
+
+
+.art-menu a.active .l, .art-menu a.active .r
+{
+	top: -56px;
+}
+
+.art-menu a.active .t
+{
+	color: #F7E7D9;
+}
+
+
+/* end MenuItem */

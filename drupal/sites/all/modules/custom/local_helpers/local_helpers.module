@@ -1,0 +1,250 @@
+<?php
+
+/**
+ * Implements hook_theme().
+ */
+function local_helpers_theme() {
+  return array(
+    // Theme hook to special jump menu.
+    'local_helpers_jump_menu' => array(
+      'variables' => array(),
+      'path' => drupal_get_path('module', 'local_helpers') . '/themes',
+      'file' => 'local_helpers.theme.inc',
+    ),
+    // Theme hook to taxonomy description display.
+    'local_helpers_tax_desc' => array(
+      'variables' => array('tid' => NULL, 'desc' => ''),
+      'path' => drupal_get_path('module', 'local_helpers') . '/themes',
+      'file' => 'local_helpers.theme.inc',
+    ),
+    // Theme hook to photo map.
+    'local_helpers_photo_map' => array(
+      'variables' => array('terms_countries' => array(), 'terms_states' => NULL),
+      'path' => drupal_get_path('module', 'local_helpers') . '/themes',
+      'file' => 'local_helpers.theme.inc',
+    ),
+  );
+}
+
+
+/**
+ * Implements hook_block_info().
+ */
+function local_helpers_block_info() {
+  $blocks['local_helpers_jump_menu'] = array(
+    'info' => t('Custom Jump Menu'),
+    'cache' => DRUPAL_NO_CACHE,
+  );
+  $blocks['local_helpers_tax_desc'] = array(
+    'info' => t('Custom Taxonomy Description'),
+    'cache' => DRUPAL_NO_CACHE,
+  );
+  $blocks['local_helpers_photo_map'] = array(
+    'info' => t('Custom Photo Map'),
+    'cache' => DRUPAL_NO_CACHE,
+  );
+  return $blocks;
+}
+
+// Block building callback
+function local_helpers_block_view($delta = '') {
+  $block = array();
+  switch ($delta) {
+    // Build the custom jump menu block.
+    case 'local_helpers_jump_menu':
+      $block['subject'] = '';
+      $output = array(
+        'custom_jump_menu' => array(
+          '#theme' => 'local_helpers_jump_menu',
+        ),
+      );
+      $block['content'] = $output;
+      break;
+    // Build the generic term description block.
+    case 'local_helpers_tax_desc':
+      $block['subject'] = '';
+      $args = arg();
+      $output = '';
+      if ($args[0] == 'taxonomy' && $args[1] == 'term' && isset($args[2])) {
+        $term = taxonomy_term_load($args[2]);
+        if ($term) {
+          $output = array(
+            'custom_tax_desc' => array(
+              '#theme' => 'local_helpers_tax_desc',
+              '#tid' => $args[2],
+              '#desc' => $term->description,
+            ),
+          );
+        }
+      }
+      $block['content'] = $output;
+      break;
+    // Build the custom jump menu block.
+    case 'local_helpers_photo_map':
+      // Calculate data for countries.
+      $vid_countries = 7;
+      $tags_countries = tagadelic_get_weighted_tags(array($vid_countries), 9);
+      $tags_countries = tagadelic_sort_tags($tags_countries);
+      // Calculate data for states.
+      $vid_states = 8;
+      $tags_states = tagadelic_get_weighted_tags(array($vid_states), 9);
+      $tags_states = tagadelic_sort_tags($tags_states);
+      // Set js.
+      drupal_add_js(drupal_get_path('module', 'local_helpers') . '/js/' . 'ammap.js');
+      drupal_add_js(drupal_get_path('module', 'local_helpers') . '/js/' . 'worldLow.js');
+      drupal_add_js(drupal_get_path('module', 'local_helpers') . '/js/' . 'usaLow.js');
+      $block['subject'] = '';
+      $output = array(
+        'custom_photo_map' => array(
+          '#theme' => 'local_helpers_photo_map',
+          '#terms_countries' => $tags_countries,
+          '#terms_states' => $tags_states,
+        ),
+      );
+      $block['content'] = $output;
+      break;  
+  }
+  return $block;
+}
+
+
+/**
+ * Implements hook_form_alter().
+ */
+function local_helpers_form_alter(&$form, &$form_state, $form_id) {
+  // Make some targeted project fields display without the wysiwyg editor
+  // while editing.
+  if ($form_id == 'project_node_form') {
+    $no_wysiwyg_fields = array(
+      'field_project_what',
+      'field_project_client',
+      'field_project_employer',
+      'field_project_roles_leader',
+      'field_project_concepts_leader',
+    );  
+    foreach ($no_wysiwyg_fields as $no_wysiwyg_field) {
+      if (isset($form[$no_wysiwyg_field]))
+        $lang_code = $form[$no_wysiwyg_field]['#language'];
+        $form[$no_wysiwyg_field][$lang_code][0]['#wysiwyg'] = FALSE;
+    }
+  }
+}
+
+
+/**
+ * Quick helper function to do some special overrides to page titles.
+ * 
+ * This function is available to be called directly from a theme template,
+ */
+function local_helpers_set_custom_title($title) {
+  $args = arg();
+  if ($args[0] == 'taxonomy' && $args[1] == 'term' && isset($args[2])) {
+    $term = taxonomy_term_load($args[2]);
+    if ($term) {
+      if (strpos($term->vocabulary_machine_name, 'project') === 0) {
+        return (t("Projects: " . $term->name));
+      }
+    }
+  }
+  return $title;
+}
+
+
+/**
+ * Implements hook_juicebox_gallery_data_alter().
+ */
+function local_helpers_juicebox_gallery_alter($juicebox, $data) {
+  // See if we are building the XML for the 'galleries' 'page_1' view display.
+  // If so include some logic to extract the description from the taxonomy term
+  // and add it as part of the Juicebox display.
+  $id_args = $juicebox->getIdArgs();
+  if ($id_args[0] == 'viewsstyle') {
+    $view = $data;
+    if ($view->name == 'galleries' && ($view->current_display == 'page_1' || $view->current_display == 'page_5') && !empty($view->args)) {
+      // Get term details from term name or tid (depending on what's passed).
+      if (!is_numeric($view->args[0])) {
+        $terms = taxonomy_get_term_by_name(str_replace('-', ' ', $view->args[0]));
+        if (!empty($terms)) {
+          $term = reset($terms);
+        }
+      }
+      else {
+        $term = taxonomy_term_load($view->args[0]);
+      }
+      if (!empty($term->description)) {
+        $juicebox->addOption('gallerydescription', strip_tags($term->description));
+        $options = $juicebox->getOptions();
+        $current_title = !empty($options['gallerytitle']) ? $options['gallerytitle'] : '';
+        $juicebox->addOption('gallerytitle', '<strong>' . $current_title . '</strong><span style="font-size: 70%;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' . strip_tags($term->description) . '</span>');
+      }
+    }
+  }
+  // See if we are building a gallery page in the photos section. If so add some
+  // helper tracking javascript.
+  if (strpos(drupal_get_path_alias(), 'photos') === 0) {
+    drupal_add_js(drupal_get_path('module', 'local_helpers') . '/js/' . 'jbHelpers.js', array('scope' => 'footer'));
+  }
+}
+
+
+function local_helpers_page_build(&$page) {
+  if (!empty($_GET['jb-demo'])) {
+    drupal_set_message(t('<strong>Juicebox Demo:</strong> Choose an option below to open a page that includes a Juicebox gallery display.'));
+  }
+}
+
+// Helper function to get state key-value pairs.
+function local_helpers_states_get_list() {
+  $state_list = array('AL'=>"Alabama",  
+			'AK'=>"Alaska",  
+			'AZ'=>"Arizona",  
+			'AR'=>"Arkansas",  
+			'CA'=>"California",  
+			'CO'=>"Colorado",  
+			'CT'=>"Connecticut",  
+			'DE'=>"Delaware",  
+			'DC'=>"Washington, DC",  
+			'FL'=>"Florida",  
+			'GA'=>"Georgia",  
+			'HI'=>"Hawaii",  
+			'ID'=>"Idaho",  
+			'IL'=>"Illinois",  
+			'IN'=>"Indiana",  
+			'IA'=>"Iowa",  
+			'KS'=>"Kansas",  
+			'KY'=>"Kentucky",  
+			'LA'=>"Louisiana",  
+			'ME'=>"Maine",  
+			'MD'=>"Maryland",  
+			'MA'=>"Massachusetts",  
+			'MI'=>"Michigan",  
+			'MN'=>"Minnesota",  
+			'MS'=>"Mississippi",  
+			'MO'=>"Missouri",  
+			'MT'=>"Montana",
+			'NE'=>"Nebraska",
+			'NV'=>"Nevada",
+			'NH'=>"New Hampshire",
+			'NJ'=>"New Jersey",
+			'NM'=>"New Mexico",
+			'NY'=>"New York",
+			'NC'=>"North Carolina",
+			'ND'=>"North Dakota",
+			'OH'=>"Ohio",  
+			'OK'=>"Oklahoma",  
+			'OR'=>"Oregon",  
+			'PA'=>"Pennsylvania",  
+			'RI'=>"Rhode Island",  
+			'SC'=>"South Carolina",  
+			'SD'=>"South Dakota",
+			'TN'=>"Tennessee",  
+			'TX'=>"Texas",  
+			'UT'=>"Utah",  
+			'VT'=>"Vermont",  
+			'VA'=>"Virginia",  
+			'WA'=>"Washington",  
+			'WV'=>"West Virginia",  
+			'WI'=>"Wisconsin",  
+			'WY'=>"Wyoming");
+  return $state_list;
+}

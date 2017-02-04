@@ -1,0 +1,20 @@
+/* This file will hold styles that are loaded using the same media query as the narrow grid. */
+/* If you are using the default media queries provided by Omega, these styles will also
+ *  apply to the normal and widescreen layouts. You may override these styles in the normal 
+ *  and widescreen CSS files as appropriate. */
+
+
+/* When the sidebar is "sticky", it's in a fixed position, and its contents
+seem to loose their width properties */
+#region-sidebar-second .is-sticky section.block {
+  width: 160px;
+}
+
+body {
+  font-size: 11px;
+}
+
+/* Highlight show */
+.highlight-show-parent {
+  height: 400px;
+}

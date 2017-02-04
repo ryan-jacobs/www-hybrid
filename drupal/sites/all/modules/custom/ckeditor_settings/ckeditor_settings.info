@@ -1,0 +1,8 @@
+name = "Ckeditor Settings with WYSIWYG"
+description = "Provides a way to set config.js variables for ckeditor when using wysiwyg module."
+package = User interface
+
+core = 7.x
+files[] = ckeditor_settings.module
+
+configure = admin/config/content/ckeditor_settings

@@ -1,0 +1,58 @@
+<?php
+
+function ckeditor_settings_wysiwyg_editor_settings_alter(&$settings, $context) {
+  if ($context['profile']->editor == 'ckeditor') {
+    // Add-in our custom conf settings.
+    $custom_settings = list_extract_allowed_values(variable_get('ckeditor_settings_values'), 'list_text', FALSE);
+    foreach($custom_settings as $key => $def) {
+      $settings[$key] = $def;
+    }   
+    // Also, for some reason some parts of the toolbar do not inherit styles
+    // correctly unless the css file def does not have a starting "/". So strip.
+    /*
+    if ($settings['contentsCss']) {
+      if(is_array($settings['contentsCss'])) {
+        foreach($settings['contentsCss'] as $key => $def) {
+          $settings['contentsCss'][$key] = ltrim($settings['contentsCss'][$key], '/');
+        }
+      }
+      else {
+        $settings['contentsCss'] = ltrim($settings['contentsCss']);
+      }
+    }*/
+  }
+}
+
+
+/**
+* Implements hook_menu().
+*/
+function ckeditor_settings_menu() {
+  $items = array(); 
+  $items['admin/config/content/ckeditor_settings'] = array(
+    'title' => 'Ckeditor Settings with WYSIWYG',
+    'description' => 'Provides a way to set config.js variables for ckeditor when using wysiwyg module.',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('ckeditor_settings_form'),
+    'access arguments' => array('access administration pages'),
+    'type' => MENU_NORMAL_ITEM,
+  );
+  return $items;
+} 
+
+
+/**
+* Form function, called by drupal_get_form()
+* in ckeditor_settings_menu().
+*/
+function ckeditor_settings_form($form, &$form_state){
+  $form['ckeditor_settings_values'] = array(
+    '#type' => 'textarea',
+    '#title' => t('Custom config options'),
+    '#default_value' => variable_get('ckeditor_settings_values', ''),
+    '#size' => 6,
+    '#description' => t('Custom (global) ckeditor config options in key|value pairs, one per line.'),
+    '#required' => FALSE,
+  );
+  return system_settings_form($form);
+}
