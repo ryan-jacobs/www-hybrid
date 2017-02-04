@@ -1,4 +1,0 @@
-name = Revisioning Scheduler
-description = "Allows revisions to be published at specified times."
-core = "7.x"
-version = "7.x-dev"
