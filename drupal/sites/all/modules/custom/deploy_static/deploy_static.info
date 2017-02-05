@@ -1,0 +1,8 @@
+name = "Deploy Tools"
+description = "Deploy static site files."
+package = Custom
+
+; Local Class and Plugin Files
+files[] = includes/JbStreamWrapper.inc
+
+core = 7.x

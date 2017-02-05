@@ -1,0 +1,90 @@
+<?php
+
+
+/**
+ * Implements hook_menu().
+ */
+function deploy_static_menu() {
+  // Add menu item that produces the "config.xml" data that is linked to a
+  // specific gallery.
+  $items['deploy'] = array(
+    'title' => 'Deploy static site',
+    'description' => 'Deploy static site.',
+    'page callback' => 'deploy_static_deploy',
+    'access callback' => TRUE,
+    'type' => MENU_CALLBACK,
+  );
+  return $items;
+}
+
+
+/**
+ * Implements hook_stream_wrappers().
+ */
+function deploy_static_stream_wrappers() {
+  return array(
+    'jb' => array(
+      'name' => t('Juicebox static files'),
+      'class' => 'JbStreamWrapper',
+      'description' => t('Provides access to Juicebox static files.'),
+      'type' => STREAM_WRAPPERS_LOCAL_NORMAL,
+    ),
+  );
+}
+
+
+/**
+ * Menu callback: generate static site content for hosting.
+ */
+function deploy_static_deploy() {
+  // Set a flag that hooks can use to identify if we are building static verions
+  // of the XML.
+  // @see deploy_static_juicebox_gallery_alter()
+  $deploy_static_processing = &drupal_static(__FUNCTION__, TRUE);
+  $vocabulary = taxonomy_vocabulary_machine_name_load('photo_tags');
+  $terms = entity_load('taxonomy_term', FALSE, array('vid' => $vocabulary->vid));
+  foreach ($terms as $term) {
+    $dir = 'viewsstyle/galleries/page_1';
+    $path = $dir . '/' . str_replace(' ', '-', $term->name);
+    // It seems most clean to just used the XML callbak directly, but as it
+    // prints content we need to wrap it in output buffering.
+    ob_start();
+    call_user_func_array('juicebox_page_xml', explode('/', $path));
+    $xml = ob_get_clean();
+    if ($xml) {
+      $test_dir = 'jb://' . $dir;
+      if (file_prepare_directory($test_dir, FILE_CREATE_DIRECTORY)) {
+        file_unmanaged_save_data($xml, 'jb://' . $path . '.xml', FILE_EXISTS_REPLACE);
+      }
+    }
+  }
+  $deploy_static_processing = FALSE;
+}
+
+
+/**
+ * Implements hook_juicebox_gallery_data_alter().
+ */
+function deploy_static_juicebox_gallery_alter($juicebox, $data) {
+  // Apply special processing only if we are in the middle of processing static
+  // XML for a deployment.
+  $deploy_static_processing = &drupal_static('deploy_static_deploy');
+  if ($deploy_static_processing) {
+    global $base_url;
+    foreach ($juicebox->getImages() as $id => &$image) {
+      foreach ($image['src_data'] as $key => &$value) {
+        // Check of this property is an image URL. If so we need to request it
+        // (to ensure that image styles are generated) and then alter the URL
+        // to be relative to our static structure (as opposed to the absolute
+        // format that is used by default).
+        if (strpos($value, $base_url) === 0) {
+          $result = drupal_http_request($value);
+          $value = str_replace($base_url, 'drupal', $value);
+        }
+      }
+      // Re-save the altered image.
+      $juicebox->addImage($image['src_data'], $image['title'], $image['caption'], NULL, $id);
+    }
+  }
+}
+

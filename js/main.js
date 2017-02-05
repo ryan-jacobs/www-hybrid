@@ -67,7 +67,7 @@ $(function() {
           type: 'iframe',
         },
         ], {
-          padding: 0,
+          padding: 2,
           width: "90%",
           height: "90%",
           autoSize : false,

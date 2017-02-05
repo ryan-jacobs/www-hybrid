@@ -8,8 +8,8 @@ for (var i = 0; i < hashes.length; i++)
 }
 new juicebox({
   containerId: "juicebox-container",
-  configUrl: vars['conf'],
+  configUrl: vars['conf'] + '?v=1',
   galleryWidth: "100%",
   galleryHeight: "100%",
-  backgroundColor: "#222222"
+  backgroundColor: "#555"
 });
