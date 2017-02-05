@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<juicebox gallerywidth="100%" galleryheight="85%" backgroundcolor="#333333" textcolor="rgba(255,255,255,1)" thumbframecolor="rgba(255,255,255,.5)" showopenbutton="TRUE" showexpandbutton="TRUE" showthumbsbutton="TRUE" usethumbdots="FALSE" usefullscreenexpand="FALSE" imagetransitiontype="CROSS_FADE" sharefacebook="TRUE" sharetwitter="TRUE" sharegplus="TRUE" expandinnewpage="TRUE">
+  <image smallImageURL="drupal/sites/default/files/styles/juicebox_small/public/photos/Road%20Train%20in%20Rural%20Australia.jpg?itok=mU6U1L4X" imageURL="drupal/sites/default/files/styles/juicebox_medium/public/photos/Road%20Train%20in%20Rural%20Australia.jpg?itok=U9OHAc2X" largeImageURL="drupal/sites/default/files/styles/juicebox_large/public/photos/Road%20Train%20in%20Rural%20Australia.jpg?itok=M93VfMAD" thumbURL="drupal/sites/default/files/styles/juicebox_square_thumbnail/public/photos/Road%20Train%20in%20Rural%20Australia.jpg?itok=AA-HpStm" linkURL="drupal/sites/default/files/photos/Road%20Train%20in%20Rural%20Australia.jpg" linkTarget="_blank" juiceboxCompatible="1">
+    <title><![CDATA[Road Train in Rural Australia]]></title>
+    <caption><![CDATA[]]></caption>
+  </image>
+  <image smallImageURL="drupal/sites/default/files/styles/juicebox_small/public/photos/Train%20Station%20in%20Wollongong%2C%20Australia.JPG?itok=-IIJE21g" imageURL="drupal/sites/default/files/styles/juicebox_medium/public/photos/Train%20Station%20in%20Wollongong%2C%20Australia.JPG?itok=lRMVZsVa" largeImageURL="drupal/sites/default/files/styles/juicebox_large/public/photos/Train%20Station%20in%20Wollongong%2C%20Australia.JPG?itok=ZMyBpDnV" thumbURL="drupal/sites/default/files/styles/juicebox_square_thumbnail/public/photos/Train%20Station%20in%20Wollongong%2C%20Australia.JPG?itok=g_eoq052" linkURL="drupal/sites/default/files/photos/Train%20Station%20in%20Wollongong%2C%20Australia.JPG" linkTarget="_blank" juiceboxCompatible="1">
+    <title><![CDATA[Train Station in Wollongong, Australia]]></title>
+    <caption><![CDATA[]]></caption>
+  </image>
+  <image smallImageURL="drupal/sites/default/files/styles/juicebox_small/public/photos/Sydney%20Harbor%20Bridge%2C%20Australia.JPG?itok=b7JXwvt1" imageURL="drupal/sites/default/files/styles/juicebox_medium/public/photos/Sydney%20Harbor%20Bridge%2C%20Australia.JPG?itok=pS41v0fu" largeImageURL="drupal/sites/default/files/styles/juicebox_large/public/photos/Sydney%20Harbor%20Bridge%2C%20Australia.JPG?itok=xO0fygve" thumbURL="drupal/sites/default/files/styles/juicebox_square_thumbnail/public/photos/Sydney%20Harbor%20Bridge%2C%20Australia.JPG?itok=elyTa_ig" linkURL="drupal/sites/default/files/photos/Sydney%20Harbor%20Bridge%2C%20Australia.JPG" linkTarget="_blank" juiceboxCompatible="1">
+    <title><![CDATA[Sydney Harbor Bridge at Night, Australia]]></title>
+    <caption><![CDATA[]]></caption>
+  </image>
+  <image smallImageURL="drupal/sites/default/files/styles/juicebox_small/public/photos/Sydney%20Harbor%2C%20Australia.JPG?itok=toz5h93L" imageURL="drupal/sites/default/files/styles/juicebox_medium/public/photos/Sydney%20Harbor%2C%20Australia.JPG?itok=MsmjEspX" largeImageURL="drupal/sites/default/files/styles/juicebox_large/public/photos/Sydney%20Harbor%2C%20Australia.JPG?itok=eJJZ3rEA" thumbURL="drupal/sites/default/files/styles/juicebox_square_thumbnail/public/photos/Sydney%20Harbor%2C%20Australia.JPG?itok=WgM7M2ta" linkURL="drupal/sites/default/files/photos/Sydney%20Harbor%2C%20Australia.JPG" linkTarget="_blank" juiceboxCompatible="1">
+    <title><![CDATA[Sydney Harbor Sunset, Australia]]></title>
+    <caption><![CDATA[]]></caption>
+  </image>
+</juicebox>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<juicebox gallerywidth="100%" galleryheight="85%" backgroundcolor="#333333" textcolor="rgba(255,255,255,1)" thumbframecolor="rgba(255,255,255,.5)" showopenbutton="TRUE" showexpandbutton="TRUE" showthumbsbutton="TRUE" usethumbdots="FALSE" usefullscreenexpand="FALSE" imagetransitiontype="CROSS_FADE" sharefacebook="TRUE" sharetwitter="TRUE" sharegplus="TRUE" expandinnewpage="TRUE">
+  <image smallImageURL="drupal/sites/default/files/styles/juicebox_small/public/photos/Twin%20Sisters%20outside%20Anchorage%2C%20Alaska.JPG?itok=TTmLGhng" imageURL="drupal/sites/default/files/styles/juicebox_medium/public/photos/Twin%20Sisters%20outside%20Anchorage%2C%20Alaska.JPG?itok=zcPddFFU" largeImageURL="drupal/sites/default/files/styles/juicebox_large/public/photos/Twin%20Sisters%20outside%20Anchorage%2C%20Alaska.JPG?itok=w_AOsrVC" thumbURL="drupal/sites/default/files/styles/juicebox_square_thumbnail/public/photos/Twin%20Sisters%20outside%20Anchorage%2C%20Alaska.JPG?itok=WRI1Dqez" linkURL="drupal/sites/default/files/photos/Twin%20Sisters%20outside%20Anchorage%2C%20Alaska.JPG" linkTarget="_blank" juiceboxCompatible="1">
+    <title><![CDATA[Twin Sisters Outside Anchorage, Alaska]]></title>
+    <caption><![CDATA[]]></caption>
+  </image>
+  <image smallImageURL="drupal/sites/default/files/styles/juicebox_small/public/photos/Alaska%20Range%20Skyline%20inside%20Danali%20NP.JPG?itok=4Ms05qFX" imageURL="drupal/sites/default/files/styles/juicebox_medium/public/photos/Alaska%20Range%20Skyline%20inside%20Danali%20NP.JPG?itok=49RXhZba" largeImageURL="drupal/sites/default/files/styles/juicebox_large/public/photos/Alaska%20Range%20Skyline%20inside%20Danali%20NP.JPG?itok=SIcCDNRW" thumbURL="drupal/sites/default/files/styles/juicebox_square_thumbnail/public/photos/Alaska%20Range%20Skyline%20inside%20Danali%20NP.JPG?itok=sWJ4U7nk" linkURL="drupal/sites/default/files/photos/Alaska%20Range%20Skyline%20inside%20Danali%20NP.JPG" linkTarget="_blank" juiceboxCompatible="1">
+    <title><![CDATA[Alaska Range Skyline Inside Danali NP]]></title>
+    <caption><![CDATA[]]></caption>
+  </image>
+</juicebox>

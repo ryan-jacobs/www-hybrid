@@ -40,19 +40,38 @@ function deploy_static_deploy() {
   // Set a flag that hooks can use to identify if we are building static verions
   // of the XML.
   // @see deploy_static_juicebox_gallery_alter()
+  $xml_paths = array();
   $deploy_static_processing = &drupal_static(__FUNCTION__, TRUE);
+  // Get paths for full albums based on photo_tags term filters.
   $vocabulary = taxonomy_vocabulary_machine_name_load('photo_tags');
   $terms = entity_load('taxonomy_term', FALSE, array('vid' => $vocabulary->vid));
   foreach ($terms as $term) {
-    $dir = 'viewsstyle/galleries/page_1';
-    $path = $dir . '/' . str_replace(' ', '-', $term->name);
+    $xml_paths[] = 'viewsstyle/galleries/page_1/' . str_replace(' ', '-', $term->name);
+  }
+  // Get paths for country albums based on photo_location_country term filters.
+  $vocabulary = taxonomy_vocabulary_machine_name_load('photo_location_country');
+  $terms = entity_load('taxonomy_term', FALSE, array('vid' => $vocabulary->vid));
+  foreach ($terms as $term) {
+    $xml_paths[] = 'viewsstyle/galleries/page_2/' . $term->tid;
+  }
+  // Get paths for state albums based on photo_location_state term filters.
+  $vocabulary = taxonomy_vocabulary_machine_name_load('photo_location_state');
+  $terms = entity_load('taxonomy_term', FALSE, array('vid' => $vocabulary->vid));
+  foreach ($terms as $term) {
+    $xml_paths[] = 'viewsstyle/galleries/page_2/' . $term->tid;
+  }
+  // Process XML requests into static data.
+  foreach ($xml_paths as $path) {
     // It seems most clean to just used the XML callbak directly, but as it
     // prints content we need to wrap it in output buffering.
+    $path_args = explode('/', $path);
     ob_start();
-    call_user_func_array('juicebox_page_xml', explode('/', $path));
+    call_user_func_array('juicebox_page_xml', $path_args);
     $xml = ob_get_clean();
     if ($xml) {
-      $test_dir = 'jb://' . $dir;
+      // For the directory we remove the last part of the path.
+      array_pop($path_args);
+      $test_dir = 'jb://' . implode('/', $path_args);
       if (file_prepare_directory($test_dir, FILE_CREATE_DIRECTORY)) {
         file_unmanaged_save_data($xml, 'jb://' . $path . '.xml', FILE_EXISTS_REPLACE);
       }
