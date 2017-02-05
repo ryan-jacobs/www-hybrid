@@ -79,6 +79,9 @@ function deploy_static_juicebox_gallery_alter($juicebox, $data) {
         // format that is used by default).
         if (strpos($value, $base_url) === 0) {
           $result = drupal_http_request($value);
+          if ($result->code != 200) {
+            watchdog('deploy', 'There was an error fetching image url @url', array('@url' => $value), WATCHDOG_ERROR);
+          }
           $value = str_replace($base_url, 'drupal', $value);
         }
       }
