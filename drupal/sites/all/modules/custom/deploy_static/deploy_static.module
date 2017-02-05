@@ -48,6 +48,12 @@ function deploy_static_deploy() {
   foreach ($terms as $term) {
     $xml_paths[] = 'viewsstyle/galleries/page_1/' . str_replace(' ', '-', $term->name);
   }
+  // Get paths for full informal albums based on generic tags term filters.
+  $vocabulary = taxonomy_vocabulary_machine_name_load('tags');
+  $terms = entity_load('taxonomy_term', FALSE, array('vid' => $vocabulary->vid));
+  foreach ($terms as $term) {
+    $xml_paths[] = 'viewsstyle/galleries/page_5/' . str_replace(' ', '-', $term->name);
+  }
   // Get paths for country albums based on photo_location_country term filters.
   $vocabulary = taxonomy_vocabulary_machine_name_load('photo_location_country');
   $terms = entity_load('taxonomy_term', FALSE, array('vid' => $vocabulary->vid));
