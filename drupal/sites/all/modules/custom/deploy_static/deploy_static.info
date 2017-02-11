@@ -1,6 +1,7 @@
 name = "Deploy Tools"
 description = "Deploy static site files."
 package = Custom
+dependencies[] = "local_helpers"
 
 ; Local Class and Plugin Files
 files[] = includes/JbStreamWrapper.inc

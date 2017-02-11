@@ -84,6 +84,35 @@ function deploy_static_deploy() {
     }
   }
   $deploy_static_processing = FALSE;
+  // Process map area json.
+  $state_areas = array();
+  $vocabulary = taxonomy_vocabulary_machine_name_load('photo_location_state');
+  $terms = tagadelic_get_weighted_tags(array($vocabulary->vid));
+  foreach ($terms as $term) {
+    $state_areas[] = array(
+      'id' => 'US-' . array_search(t($term->name), local_helpers_states_get_list()),
+      'selectable' => TRUE,
+      'title' => t($term->name) . ' (' . $term->number_of_posts . ' images)',
+      'value' => $term->number_of_posts,
+      'href' => 'gallery.html?conf=drupal/juicebox/xml/viewsstyle/galleries/page_2/' . $term->tid . '.xml',
+    );
+  }
+  $country_areas = array();
+  $vocabulary = taxonomy_vocabulary_machine_name_load('photo_location_country');
+  $terms = tagadelic_get_weighted_tags(array($vocabulary->vid));
+  include_once DRUPAL_ROOT . '/includes/locale.inc';
+  foreach ($terms as $term) {
+    $country_areas[] = array(
+      'id' => array_search(t($term->name), country_get_list()),
+      'selectable' => TRUE,
+      'title' => t($term->name) . ' (' . $term->number_of_posts . ' images)',
+      'value' => $term->number_of_posts,
+      'href' => 'gallery.html?conf=drupal/juicebox/xml/viewsstyle/galleries/page_2/' . $term->tid . '.xml',
+    );
+  }
+  $json = 'var localStateAreas = ' . json_encode($state_areas) . ';';
+  $json .= 'var localCountryAreas = ' . json_encode($country_areas) . ';';
+  $result = file_unmanaged_save_data($json, 'public://local_map_areas.js', FILE_EXISTS_REPLACE);
 }
 
 
