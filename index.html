@@ -10,8 +10,9 @@
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/main.css" rel="stylesheet">
   <link href="libs/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-  <link href="http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+  <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,700,400italic,700italic" rel="stylesheet" type="text/css">
   <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+  <link href="http://fonts.googleapis.com/css?family=Raleway:400,700" rel="stylesheet" type="text/css">
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
@@ -92,19 +93,31 @@
           <!-- Tab panes -->
           <div class="tab-content">
             <div role="tabpanel" class="tab-pane fade in active" id="images-albums">
-              <p>Here is some content in tab 1.</p>
-              <p><a class="fancybox" data-fancybox-type="iframe" rel="group" href="gallery.html?conf=drupal/juicebox/xml/viewsstyle/galleries/page_1/Nature.xml">Nature</a></p>
-              <p><a class="fancybox" data-fancybox-type="iframe" rel="group" href="gallery.html?conf=drupal/juicebox/xml/viewsstyle/galleries/page_1/Landscapes.xml">Landscapes</a></p>
-              <p><a class="fancybox" data-fancybox-type="iframe" rel="group" href="gallery.html?conf=drupal/juicebox/xml/viewsstyle/galleries/page_1/Digital-Projects.xml">Digital Projects</a></p>
-
+              <div class="row">
+                <div class="col-md-4 image-thumb-wrap">
+                  <div class="image-thumb">
+                    <a class="fancybox" data-fancybox-type="iframe" rel="group" href="gallery.html?conf=drupal/juicebox/xml/viewsstyle/galleries/page_1/Nature.xml"><img src="img/nature.jpg" /></a>
+                    <div class="image-title"><a class="fancybox" data-fancybox-type="iframe" rel="group" href="gallery.html?conf=drupal/juicebox/xml/viewsstyle/galleries/page_1/Nature.xml">Nature</a></div>
+                  </div>
+                </div>
+                <div class="col-md-4 image-thumb-wrap">
+                  <div class="image-thumb">
+                    <a class="fancybox" data-fancybox-type="iframe" rel="group" href="gallery.html?conf=drupal/juicebox/xml/viewsstyle/galleries/page_1/Landscapes.xml"><img src="img/structures.jpg" /></a>
+                    <div class="image-title"><a class="fancybox" data-fancybox-type="iframe" rel="group" href="gallery.html?conf=drupal/juicebox/xml/viewsstyle/galleries/page_1/Landscapes.xml">Structures</a></div>
+                  </div>
+                </div>
+                <div class="col-md-4 image-thumb-wrap">
+                  <div class="image-thumb"><a class="fancybox" data-fancybox-type="iframe" rel="group" href="gallery.html?conf=drupal/juicebox/xml/viewsstyle/galleries/page_1/Digital-Projects.xml"><img src="img/image_projects.jpg" /></a>
+                  <div class="image-title"><a class="fancybox" data-fancybox-type="iframe" rel="group" href="gallery.html?conf=drupal/juicebox/xml/viewsstyle/galleries/page_1/Digital-Projects.xml">Digital Projects</a></div>
+                  </div>
+                </div>
+              </div>
             </div>
             <div role="tabpanel" class="tab-pane fade" id="images-map">
               <div id="chartdiv"></div>
             </div>
           </div>
-          <p>Grayscale is a free Bootstrap 3 theme created by Start Bootstrap. It can be yours right now, simply download the template on <a href="http://startbootstrap.com/template-overviews/grayscale/">the preview page</a>. The theme is open source, and you can use it for any purpose, personal or commercial.</p>
-          <p>This theme features stock photos by <a href="http://gratisography.com/">Gratisography</a> along with a custom Google Maps skin courtesy of <a href="http://snazzymaps.com/">Snazzy Maps</a>.</p>
-          <p>Grayscale includes full HTML, CSS, and custom JavaScript files along with LESS files for easy customization.</p>
+          <p></p>
         </div>
       </div>
     </div>
@@ -123,14 +136,13 @@
           <div class="tab-content">
             <div role="tabpanel" class="tab-pane fade in active" id="about-pro">
               <p>Here is some content in tab 1.</p>
-              <a href="https://www.linkedin.com/in/ryanjacobs" target="_blank" class="btn btn-default btn-lg"><i class="fa fa-linkedin-square larger"></i>&nbsp;&nbsp;LinkedIn Profile</a>&nbsp;&nbsp;
-              <a href="https://www.drupal.org/u/rjacobs" target="_blank" class="btn btn-default btn-lg"><i class="fa fa-drupal larger"></i>&nbsp;&nbsp;Drupal Profile</a>
+              <a href="https://www.linkedin.com/in/ryanjacobs" target="_blank" class="btn btn-default btn-lg"><i class="fa fa-linkedin-square larger"></i>LinkedIn Profile</a>
+              <a href="https://www.drupal.org/u/rjacobs" target="_blank" class="btn btn-default btn-lg"><i class="fa fa-drupal larger"></i>Drupal Profile</a>
             </div>
             <div role="tabpanel" class="tab-pane fade" id="about-personal">
               <p>Here is some content in tab 2.</p>
             </div>
           </div>
-          <p>You can download Grayscale for free on the preview page at Start Bootstrap.</p>
         </div>
       </div>
     </div>

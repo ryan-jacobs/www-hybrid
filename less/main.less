@@ -4,7 +4,7 @@
 body {
   width: 100%;
   height: 100%;
-  font-family: "Lora","Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-family: @base-font;
   color: white;
   background-color: black;
 }
@@ -16,9 +16,10 @@ html {
 // Basic typography.
 h1, h2, h3, h4, h5, h6 {
   margin: 0 0 35px;
-  text-transform: uppercase;
-  font-family: "Montserrat","Helvetica Neue",Helvetica,Arial,sans-serif;
-  font-weight: 700;
+  font-variant: small-caps;
+  // text-transform: uppercase;
+  font-family: @header-font;
+  font-weight: 400;
   letter-spacing: 1px;
 }
 p {
@@ -59,10 +60,11 @@ a {
 .nav-tabs {
   border-bottom: 1px solid #fff;
   text-align: center;
-  margin-bottom: 2em;
-  font-family: "Montserrat","Helvetica Neue",Helvetica,Arial,sans-serif;
+  margin-bottom: @text-gap;
+  font-family: @header-font;
   & > li {
     // Additional centering considerations.
+    font-size: 16px;
     float: none;
     display: inline-block;
     *display: inline; /* ie7 fix */
@@ -99,7 +101,7 @@ a {
   }
   // Misc border cleanup.
   & > li.active > a, > li.active > a:focus, > li.active > a:hover {
- rder-width: 0 !important;
+    border-width: 0 !important;
   }
 }
 .light-section .nav-tabs {
@@ -109,14 +111,14 @@ a {
   }
 }
 .tab-content {
-  margin-bottom: 2em;
+  margin-bottom: @text-gap;
 }
 
 
 #chartdiv {
 	width: 100%;
 	height: 500px;
-  margin-bottom: 2em;
+  margin-bottom: @text-gap;
 }
 
 // Top intro styles.
@@ -147,12 +149,15 @@ a {
     }
     .intro-text {
       h2 {
+        font-weight: 400;
+        text-shadow: 3px 3px 2px rgba(0, 0, 0, 0.7);
         margin-bottom: 0.5em;
         margin-left: 1em;
         a, a:hover {
           color: #fff !important
         }
         a i.fa {
+          text-shadow: none;
           visibility: hidden;
           margin-left: 0.3em;
           color: lighten(@primary, 10%);
@@ -227,7 +232,7 @@ a {
   margin-bottom: 0;
   border-bottom: 1px solid fade(white, 30%);
   text-transform: uppercase;
-  font-family: "Montserrat","Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-family: @header-font;
   background-color: black;
   .navbar-toggle {
     padding: 4px 6px;
@@ -240,6 +245,7 @@ a {
   }
   .navbar-brand {
     font-weight: 700;
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
     &:focus {
       outline: none;
     }
@@ -302,7 +308,7 @@ a {
 // Button styles
 .btn {
   text-transform: uppercase;
-  font-family: "Montserrat","Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-family: @header-font;
   font-weight: 400;
   -webkit-transition: all .2s ease-in-out;
   -moz-transition: all .2s ease-in-out;
@@ -312,6 +318,7 @@ a {
 
 .btn-default {
   border: 1px solid @primary;
+  margin: 0 @text-gap/2 @text-gap 0;
   color: @primary;
   background-color: transparent;
   &:hover,
@@ -320,6 +327,9 @@ a {
     outline: none;
     color: #fff;
     background-color: @primary;
+  }
+  i.fa {
+    margin-right: 0.5em;
   }
 }
 .btn-circle {
@@ -367,6 +377,44 @@ footer {
   padding: 50px 0;
   p {
     margin: 0;
+  }
+}
+
+.image-thumb-wrap {
+  margin-bottom: @text-gap;
+  .image-thumb {
+    img {
+      border-radius: 3px;
+      -moz-border-radius: 3px;
+      -webkit-border-radius: 3px;
+      -khtml-border-radius: 3px;
+      max-width: 100%;
+      height: auto;
+      width: auto;
+      &:hover {
+        opacity:0.7;
+        filter:alpha(opacity=70);
+      }
+    }
+    .image-title {
+      padding: 7px;
+      display: block;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      background-color: rgba(0,0,0,0.5);
+      width: 100%;
+      border-radius: 0px 0px 3px 3px;
+      -moz-border-radius: 0px 0px 3px 3px;
+      -webkit-border-radius: 0px 0px 3px 3px;
+      -khtml-border-radius: 0px 0px 3px 3px;
+      background-clip:         padding-box;
+      -webkit-background-clip: padding-box; 
+      -moz-background-clip:    padding;
+      a, a:hover {
+        color: #fff;
+      }
+    }
   }
 }
 
