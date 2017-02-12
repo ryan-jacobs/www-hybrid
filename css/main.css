@@ -33,6 +33,9 @@ p {
     line-height: 1.6;
   }
 }
+.larger {
+  font-size: 120% !important;
+}
 a {
   color: #e05300;
   -webkit-transition: all 0.2s ease-in-out;
@@ -178,13 +181,14 @@ a:focus {
 .intro .intro-body .intro-text {
   font-size: 18px;
 }
-.intro .intro-photo-caption {
+.intro .intro-extra {
   display: none;
 }
 @media (min-width: 768px) {
   .intro {
-    box-shadow: inset 0px 100px 100px 0px rgba(0, 0, 0, 0.4);
     background: url(../img/P1020492.jpg) no-repeat bottom center scroll;
+    box-shadow: inset 0px -75px 75px 0px #000000;
+    background-attachment: fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
@@ -197,13 +201,17 @@ a:focus {
   .intro .intro-body .intro-text {
     font-size: 26px;
   }
-  .intro .intro-photo-caption {
+  .intro .intro-extra {
     padding: 15px;
     display: block;
     position: absolute;
-    bottom: 0;
+    bottom: 30px;
     right: 0;
     margin: 0;
+  }
+  .intro .intro-extra a,
+  .intro .intro-extra a:hover {
+    color: #fff;
   }
 }
 .btn-circle {
@@ -309,7 +317,7 @@ body {
 .nav-tabs {
   border-bottom: 1px solid #fff;
   text-align: center;
-  margin-bottom: 50px;
+  margin-bottom: 2em;
   font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 .nav-tabs > li {
@@ -319,6 +327,7 @@ body {
   /* ie7 fix */
   zoom: 1;
   /* hasLayout ie7 trigger */
+  margin-right: 1em;
 }
 .nav-tabs > li > a {
   border: none !important;
@@ -357,6 +366,9 @@ body {
 }
 .light-section .nav-tabs > li > a {
   color: #000;
+}
+.tab-content {
+  margin-bottom: 2em;
 }
 #chartdiv {
   width: 100%;
