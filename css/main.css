@@ -56,6 +56,80 @@ a:focus {
   font-size: 80%;
   color: #b3b3b3;
 }
+.navbar-custom {
+  margin-bottom: 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  text-transform: uppercase;
+  font-family: "Raleway", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background-color: black;
+}
+.navbar-custom .navbar-toggle {
+  padding: 4px 6px;
+  font-size: 16px;
+  color: white;
+}
+.navbar-custom .navbar-toggle:focus,
+.navbar-custom .navbar-toggle:active {
+  outline: none;
+}
+.navbar-custom .navbar-brand {
+  font-weight: 700;
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+}
+.navbar-custom .navbar-brand:focus {
+  outline: none;
+}
+.navbar-custom .navbar-brand i {
+  opacity: 0;
+  color: #ff6b14;
+  transition: opacity 1s;
+}
+.navbar-custom a {
+  color: white;
+}
+.navbar-custom .nav li a {
+  -webkit-transition: background 0.3s ease-in-out;
+  -moz-transition: background 0.3s ease-in-out;
+  transition: background 0.3s ease-in-out;
+}
+.navbar-custom .nav li a:hover {
+  color: rgba(255, 255, 255, 0.8);
+  outline: none;
+  background-color: transparent;
+}
+.navbar-custom .nav li a:focus,
+.navbar-custom .nav li a:active {
+  outline: none;
+  background-color: transparent;
+}
+.navbar-custom .nav li.active {
+  outline: none;
+}
+.navbar-custom .nav li.active a {
+  background-color: rgba(224, 83, 0, 0.9);
+}
+.navbar-custom .nav li.active a:hover {
+  color: white;
+}
+.navbar-custom.top-nav-collapse .navbar-brand i {
+  opacity: 1;
+}
+@media (min-width: 768px) {
+  .navbar-custom {
+    padding: 20px 0;
+    border-bottom: none;
+    letter-spacing: 1px;
+    background: transparent;
+    -webkit-transition: background 0.5s ease-in-out, padding 0.5s ease-in-out;
+    -moz-transition: background 0.5s ease-in-out, padding 0.5s ease-in-out;
+    transition: background 0.5s ease-in-out, padding 0.5s ease-in-out;
+  }
+  .navbar-custom.top-nav-collapse {
+    padding: 0;
+    background: black;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  }
+}
 .nav-tabs {
   border-bottom: 1px solid #fff;
   text-align: center;
@@ -147,9 +221,17 @@ a:focus {
 .intro .intro-body .brand-heading {
   font-size: 40px;
 }
+.intro .intro-body .intro-text {
+  text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
+}
+.intro .intro-body .intro-text h3 {
+  margin-right: 20%;
+  margin-left: 20%;
+  padding-bottom: 1em;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
 .intro .intro-body .intro-text h2 {
   font-weight: 700;
-  text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
   margin-bottom: 0.5em;
   margin-left: 1em;
 }
@@ -225,80 +307,6 @@ a:focus {
   color: #fff;
   background-color: #000;
 }
-.navbar-custom {
-  margin-bottom: 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-  text-transform: uppercase;
-  font-family: "Raleway", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  background-color: black;
-}
-.navbar-custom .navbar-toggle {
-  padding: 4px 6px;
-  font-size: 16px;
-  color: white;
-}
-.navbar-custom .navbar-toggle:focus,
-.navbar-custom .navbar-toggle:active {
-  outline: none;
-}
-.navbar-custom .navbar-brand {
-  font-weight: 700;
-  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
-}
-.navbar-custom .navbar-brand:focus {
-  outline: none;
-}
-.navbar-custom .navbar-brand i {
-  color: #ff6b14;
-  opacity: 0;
-  transition: opacity 1s;
-}
-.navbar-custom a {
-  color: white;
-}
-.navbar-custom .nav li a {
-  -webkit-transition: background 0.3s ease-in-out;
-  -moz-transition: background 0.3s ease-in-out;
-  transition: background 0.3s ease-in-out;
-}
-.navbar-custom .nav li a:hover {
-  color: rgba(255, 255, 255, 0.8);
-  outline: none;
-  background-color: transparent;
-}
-.navbar-custom .nav li a:focus,
-.navbar-custom .nav li a:active {
-  outline: none;
-  background-color: transparent;
-}
-.navbar-custom .nav li.active {
-  outline: none;
-}
-.navbar-custom .nav li.active a {
-  background-color: rgba(224, 83, 0, 0.9);
-}
-.navbar-custom .nav li.active a:hover {
-  color: white;
-}
-.navbar-custom.top-nav-collapse .navbar-brand i {
-  opacity: 1;
-}
-@media (min-width: 768px) {
-  .navbar-custom {
-    padding: 20px 0;
-    border-bottom: none;
-    letter-spacing: 1px;
-    background: transparent;
-    -webkit-transition: background 0.5s ease-in-out, padding 0.5s ease-in-out;
-    -moz-transition: background 0.5s ease-in-out, padding 0.5s ease-in-out;
-    transition: background 0.5s ease-in-out, padding 0.5s ease-in-out;
-  }
-  .navbar-custom.top-nav-collapse {
-    padding: 0;
-    background: black;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-  }
-}
 .btn {
   text-transform: uppercase;
   font-family: "Raleway", "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -370,6 +378,7 @@ footer p {
   margin-bottom: 2em;
 }
 .image-thumb-wrap .image-thumb img {
+  border: 1px solid #777;
   border-radius: 3px;
   -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
@@ -388,7 +397,7 @@ footer p {
   position: absolute;
   bottom: 0;
   left: 0;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.6);
   width: 100%;
   border-radius: 0px 0px 3px 3px;
   -moz-border-radius: 0px 0px 3px 3px;

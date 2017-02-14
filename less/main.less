@@ -56,6 +56,84 @@ a {
   color: darken(#fff, 30%);
 }
 
+// Navbar styles.
+.navbar-custom {
+  margin-bottom: 0;
+  border-bottom: 1px solid fade(white, 30%);
+  text-transform: uppercase;
+  font-family: @header-font;
+  background-color: black;
+  .navbar-toggle {
+    padding: 4px 6px;
+    font-size: 16px;
+    color: white;
+    &:focus,
+    &:active {
+      outline: none;
+    }
+  }
+  .navbar-brand {
+    font-weight: 700;
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+    &:focus {
+      outline: none;
+    }
+    i {
+      opacity: 0;
+      color: lighten(@primary,10%);
+      transition: opacity 1s;
+    }
+  }
+  a {
+    color: white;
+  }
+  .nav {
+    li {
+      a {
+        -webkit-transition: background .3s ease-in-out;
+        -moz-transition: background .3s ease-in-out;
+        transition: background .3s ease-in-out;
+        &:hover {
+          color: fade(white, 80%);
+          outline: none;
+          background-color: transparent;
+        }
+        &:focus,
+        &:active {
+          outline: none;
+          background-color: transparent;
+        }
+      }
+      &.active {
+        outline: none;
+        a {
+          background-color: fade(@primary, 90%);
+          &:hover {
+            color: white;
+          }
+        }
+      }
+    }
+  }
+  &.top-nav-collapse .navbar-brand i {
+    opacity: 1;
+  }
+  @media(min-width: @mobile-break) {
+    padding: 20px 0;
+    border-bottom: none;
+    letter-spacing: 1px;
+    background: transparent;
+    -webkit-transition: background .5s ease-in-out,padding .5s ease-in-out;
+    -moz-transition: background .5s ease-in-out,padding .5s ease-in-out;
+    transition: background .5s ease-in-out,padding .5s ease-in-out;
+    &.top-nav-collapse {
+      padding: 0;
+      background: black;
+      border-bottom: 1px solid fade(white, 30%);
+    }
+  }
+}
+
 // Main nav tabs styles.
 .nav-tabs {
   border-bottom: 1px solid #fff;
@@ -148,9 +226,15 @@ a {
       font-size: 40px;
     }
     .intro-text {
+      text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
+      h3 {
+        margin-right: 20%;
+        margin-left: 20%;
+        padding-bottom: 1em;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+      }
       h2 {
         font-weight: 700;
-        text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
         margin-bottom: 0.5em;
         margin-left: 1em;
         a, a:hover {
@@ -193,6 +277,10 @@ a {
       .brand-heading {
         font-size: 100px;
       }
+      .intro-text h3 {
+        //margin-right: 0;
+        //margin-left: 0;
+      }
     }
     .intro-extra {
       padding: 15px;
@@ -226,84 +314,6 @@ a {
 .dark-section {
   color: #fff;
   background-color: #000;
-}
-
-// Navbar styles.
-.navbar-custom {
-  margin-bottom: 0;
-  border-bottom: 1px solid fade(white, 30%);
-  text-transform: uppercase;
-  font-family: @header-font;
-  background-color: black;
-  .navbar-toggle {
-    padding: 4px 6px;
-    font-size: 16px;
-    color: white;
-    &:focus,
-    &:active {
-      outline: none;
-    }
-  }
-  .navbar-brand {
-    font-weight: 700;
-    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
-    &:focus {
-      outline: none;
-    }
-    i {
-      color: lighten(@primary,10%);
-      opacity: 0;
-      transition: opacity 1s;
-    }
-  }
-  a {
-    color: white;
-  }
-  .nav {
-    li {
-      a {
-        -webkit-transition: background .3s ease-in-out;
-        -moz-transition: background .3s ease-in-out;
-        transition: background .3s ease-in-out;
-        &:hover {
-          color: fade(white, 80%);
-          outline: none;
-          background-color: transparent;
-        }
-        &:focus,
-        &:active {
-          outline: none;
-          background-color: transparent;
-        }
-      }
-      &.active {
-        outline: none;
-        a {
-          background-color: fade(@primary, 90%);
-          &:hover {
-            color: white;
-          }
-        }
-      }
-    }
-  }
-  &.top-nav-collapse .navbar-brand i {
-    opacity: 1;
-  }
-  @media(min-width: @mobile-break) {
-    padding: 20px 0;
-    border-bottom: none;
-    letter-spacing: 1px;
-    background: transparent;
-    -webkit-transition: background .5s ease-in-out,padding .5s ease-in-out;
-    -moz-transition: background .5s ease-in-out,padding .5s ease-in-out;
-    transition: background .5s ease-in-out,padding .5s ease-in-out;
-    &.top-nav-collapse {
-      padding: 0;
-      background: black;
-      border-bottom: 1px solid fade(white, 30%);
-    }
-  }
 }
 
 // Button styles
@@ -381,10 +391,12 @@ footer {
   }
 }
 
+// Image thumbnails for albums.
 .image-thumb-wrap {
   margin-bottom: @text-gap;
   .image-thumb {
     img {
+      border: 1px solid #777;
       border-radius: 3px;
       -moz-border-radius: 3px;
       -webkit-border-radius: 3px;
@@ -403,7 +415,7 @@ footer {
       position: absolute;
       bottom: 0;
       left: 0;
-      background-color: rgba(0,0,0,0.5);
+      background-color: rgba(0,0,0,0.6);
       width: 100%;
       border-radius: 0px 0px 3px 3px;
       -moz-border-radius: 0px 0px 3px 3px;
