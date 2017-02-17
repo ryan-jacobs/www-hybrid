@@ -84,7 +84,7 @@ $('.navbar-collapse ul li a').click(function() {
   }
 });
 
-// Special handeling for tabs associated with fragments.
+// Special handeling for fragments.
 $(function(){
   // If we load a page with a fragment representing a tab, open that tab and
   // scroll to the section it's in.
@@ -102,6 +102,18 @@ $(function(){
     var scrollmem = $('body').scrollTop() || $('html').scrollTop();
     window.location.hash = this.hash;
     $('html,body').scrollTop(scrollmem);
+  });
+  // Quick-and-dirty analytics tracking customizations.
+  $('a').click(function (e) {
+    // Track internal fragment links as new pageviews.
+    if (this.host === window.location.host && this.hash) {
+      ga('send', 'pageview', location.pathname + this.hash);
+    }
+    // Track external links as events.
+    else {
+      ga('send', 'event', 'outbound', 'click', this.href, {'transport': 'beacon'});
+    }
+
   });
 });
 
