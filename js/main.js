@@ -30,6 +30,17 @@ function localFancybox(href) {
   return false;
 }
 
+// Global helper: jump to the section of a tab based on a fragment. The jump
+// only happens if a tab anchor can be found matching the fragment.
+function navTabJump(hash) {
+  if (hash && $('ul.nav-tabs a[href="' + hash + '"]').length) {
+    var element = $('ul.nav-tabs a[href="' + hash + '"]');
+    var jumpto = element.closest('section');
+    element.tab('show')
+    $('html,body').animate({scrollTop: jumpto.offset().top});
+  }
+}
+
 // Collapse the navbar on scroll
 function collapseNavbar() {
   if ($(".navbar").offset().top > 50) {
@@ -84,17 +95,11 @@ $('.navbar-collapse ul li a').click(function() {
   }
 });
 
-// Special handeling for fragments.
+// Misc customizations.
 $(function(){
   // If we load a page with a fragment representing a tab, open that tab and
   // scroll to the section it's in.
-  var hash = window.location.hash;
-  if (hash && $('ul.nav-tabs a[href="' + hash + '"]').length) {
-    var element = $('ul.nav-tabs a[href="' + hash + '"]');
-    var jumpto = element.closest('section');
-    element.tab('show')
-    $('html,body').animate({scrollTop: jumpto.offset().top});
-  }
+  navTabJump(window.location.hash);
   // If a user clicks on a tab be sure to set the hash in the URL without
   // triggering any scrolling.
   $('.nav-tabs a').click(function (e) {
