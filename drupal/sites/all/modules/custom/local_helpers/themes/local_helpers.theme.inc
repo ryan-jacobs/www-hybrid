@@ -48,7 +48,7 @@ function theme_local_helpers_photo_map(&$vars) {
             $id = array_search(t($term->name), local_helpers_states_get_list());
             if ($id) {
               $id = 'US-' . $id;
-              $output .= '{ id: "' . $id . '", title: "' . $term->name . ' (' . $term->number_of_posts . ' images)", url: "' . url('taxonomy/term/') . $term->tid . '", value: ' . $term->number_of_posts . ' },' . "\n";
+              $output .= '{ id: "' . $id . '", title: "' . $term->name . ' (' . $term->number_of_posts . ' images)", url: "' . url('photos/location/' . str_replace(' ', '-', $term->name)) . '", value: ' . $term->number_of_posts . ' },' . "\n";
             }
           }
       $output .= ']
@@ -70,7 +70,7 @@ function theme_local_helpers_photo_map(&$vars) {
                 $output .= '{ id: "' . $id . '", linkToObject: dataProviderUsa, passZoomValuesToTarget: false, title: "' . $term->name . ' (' . $term->number_of_posts . ' images)", value: ' . $term->count . ' },' . "\n";
               }
               else {
-                $output .= '{ id: "' . $id . '", title: "' . $term->name . ' (' . $term->number_of_posts . ' images)", url: "' . url('taxonomy/term/') . $term->tid . '", value: ' . $term->number_of_posts . ' },' . "\n";
+                $output .= '{ id: "' . $id . '", title: "' . $term->name . ' (' . $term->number_of_posts . ' images)", url: "' . url('photos/location/' . str_replace(' ', '-', $term->name)) . '", value: ' . $term->number_of_posts . ' },' . "\n";
               }
             }
           }

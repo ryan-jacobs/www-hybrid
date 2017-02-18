@@ -42,29 +42,18 @@ function deploy_static_deploy() {
   // @see deploy_static_juicebox_gallery_alter()
   $xml_paths = array();
   $deploy_static_processing = &drupal_static(__FUNCTION__, TRUE);
-  // Get paths for full albums based on photo_tags term filters.
-  $vocabulary = taxonomy_vocabulary_machine_name_load('photo_tags');
-  $terms = entity_load('taxonomy_term', FALSE, array('vid' => $vocabulary->vid));
-  foreach ($terms as $term) {
-    $xml_paths[] = 'viewsstyle/galleries/page_1/' . str_replace(' ', '-', $term->name);
-  }
-  // Get paths for full informal albums based on generic tags term filters.
-  $vocabulary = taxonomy_vocabulary_machine_name_load('tags');
-  $terms = entity_load('taxonomy_term', FALSE, array('vid' => $vocabulary->vid));
-  foreach ($terms as $term) {
-    $xml_paths[] = 'viewsstyle/galleries/page_5/' . str_replace(' ', '-', $term->name);
-  }
-  // Get paths for country albums based on photo_location_country term filters.
-  $vocabulary = taxonomy_vocabulary_machine_name_load('photo_location_country');
-  $terms = entity_load('taxonomy_term', FALSE, array('vid' => $vocabulary->vid));
-  foreach ($terms as $term) {
-    $xml_paths[] = 'viewsstyle/galleries/page_2/' . $term->tid;
-  }
-  // Get paths for state albums based on photo_location_state term filters.
-  $vocabulary = taxonomy_vocabulary_machine_name_load('photo_location_state');
-  $terms = entity_load('taxonomy_term', FALSE, array('vid' => $vocabulary->vid));
-  foreach ($terms as $term) {
-    $xml_paths[] = 'viewsstyle/galleries/page_2/' . $term->tid;
+  $path_map = array(
+    'photo_tags' => 'viewsstyle/galleries/page_1/',
+    'tags' => 'viewsstyle/galleries/page_5/',
+    'photo_location_country' => 'viewsstyle/galleries/page_2/',
+    'photo_location_state' => 'viewsstyle/galleries/page_2/',
+  );
+  foreach ($path_map as $vocab_name => $base_url_path) {
+    $vocabulary = taxonomy_vocabulary_machine_name_load($vocab_name);
+    $terms = entity_load('taxonomy_term', FALSE, array('vid' => $vocabulary->vid));
+    foreach ($terms as $term) {
+      $xml_paths[] = $base_url_path . str_replace(' ', '-', $term->name);
+    }
   }
   // Process XML requests into static data.
   foreach ($xml_paths as $path) {
@@ -94,7 +83,7 @@ function deploy_static_deploy() {
       'selectable' => TRUE,
       'title' => t($term->name) . ' (' . $term->number_of_posts . ' images)',
       'value' => $term->number_of_posts,
-      'href' => 'gallery.html?conf=drupal/juicebox/xml/viewsstyle/galleries/page_2/' . $term->tid . '.xml',
+      'href' => 'gallery.html?conf=drupal/juicebox/xml/viewsstyle/galleries/page_2/' . str_replace(' ', '-', $term->name) . '.xml',
     );
   }
   $country_areas = array();
@@ -107,7 +96,7 @@ function deploy_static_deploy() {
       'selectable' => TRUE,
       'title' => t($term->name) . ' (' . $term->number_of_posts . ' images)',
       'value' => $term->number_of_posts,
-      'href' => 'gallery.html?conf=drupal/juicebox/xml/viewsstyle/galleries/page_2/' . $term->tid . '.xml',
+      'href' => 'gallery.html?conf=drupal/juicebox/xml/viewsstyle/galleries/page_2/' . str_replace(' ', '-', $term->name) . '.xml',
     );
   }
   $json = 'var localStateAreas = ' . json_encode($state_areas) . ';';

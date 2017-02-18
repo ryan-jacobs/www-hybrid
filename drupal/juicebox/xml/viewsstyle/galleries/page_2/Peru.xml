@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <juicebox gallerytitle="Peru" gallerywidth="100%" galleryheight="85%" backgroundcolor="#333333" textcolor="rgba(255,255,255,1)" thumbframecolor="rgba(255,255,255,.5)" showopenbutton="TRUE" showexpandbutton="TRUE" showthumbsbutton="TRUE" usethumbdots="FALSE" usefullscreenexpand="FALSE" imagetransitiontype="CROSS_FADE" sharefacebook="TRUE" sharetwitter="TRUE" sharegplus="TRUE" expandinnewpage="TRUE">
+  <image smallImageURL="drupal/sites/default/files/styles/juicebox_small/public/photos/House%20on%20Salcantay%2C%20Peru.JPG?itok=EdEfvxLc" imageURL="drupal/sites/default/files/styles/juicebox_medium/public/photos/House%20on%20Salcantay%2C%20Peru.JPG?itok=MndXEceX" largeImageURL="drupal/sites/default/files/styles/juicebox_large/public/photos/House%20on%20Salcantay%2C%20Peru.JPG?itok=_-hDMTGK" thumbURL="drupal/sites/default/files/styles/juicebox_square_thumbnail/public/photos/House%20on%20Salcantay%2C%20Peru.JPG?itok=7AgwTRrQ" linkURL="drupal/sites/default/files/photos/House%20on%20Salcantay%2C%20Peru.JPG" linkTarget="_blank" juiceboxCompatible="1">
+    <title><![CDATA[House on Salcantay, Peru]]></title>
+    <caption><![CDATA[]]></caption>
+  </image>
   <image smallImageURL="drupal/sites/default/files/styles/juicebox_small/public/photos/Llama%20Face%20in%20Machu%20Picchu%2C%20Peru.JPG?itok=WdYCvJAF" imageURL="drupal/sites/default/files/styles/juicebox_medium/public/photos/Llama%20Face%20in%20Machu%20Picchu%2C%20Peru.JPG?itok=rFx_dT0B" largeImageURL="drupal/sites/default/files/styles/juicebox_large/public/photos/Llama%20Face%20in%20Machu%20Picchu%2C%20Peru.JPG?itok=n8-Oq51x" thumbURL="drupal/sites/default/files/styles/juicebox_square_thumbnail/public/photos/Llama%20Face%20in%20Machu%20Picchu%2C%20Peru.JPG?itok=TrBhOgUJ" linkURL="drupal/sites/default/files/photos/Llama%20Face%20in%20Machu%20Picchu%2C%20Peru.JPG" linkTarget="_blank" juiceboxCompatible="1">
     <title><![CDATA[Llama Face in Machu Picchu, Peru]]></title>
     <caption><![CDATA[]]></caption>
   </image>
-  <image smallImageURL="drupal/sites/default/files/styles/juicebox_small/public/photos/House%20on%20Salcantay%2C%20Peru.JPG?itok=EdEfvxLc" imageURL="drupal/sites/default/files/styles/juicebox_medium/public/photos/House%20on%20Salcantay%2C%20Peru.JPG?itok=MndXEceX" largeImageURL="drupal/sites/default/files/styles/juicebox_large/public/photos/House%20on%20Salcantay%2C%20Peru.JPG?itok=_-hDMTGK" thumbURL="drupal/sites/default/files/styles/juicebox_square_thumbnail/public/photos/House%20on%20Salcantay%2C%20Peru.JPG?itok=7AgwTRrQ" linkURL="drupal/sites/default/files/photos/House%20on%20Salcantay%2C%20Peru.JPG" linkTarget="_blank" juiceboxCompatible="1">
-    <title><![CDATA[House on Salcantay, Peru]]></title>
+  <image smallImageURL="drupal/sites/default/files/styles/juicebox_small/public/photos/Llama%20in%20Machu%20Picchu%2C%20Peru.jpg?itok=dD8juUTM" imageURL="drupal/sites/default/files/styles/juicebox_medium/public/photos/Llama%20in%20Machu%20Picchu%2C%20Peru.jpg?itok=RfK9K6wy" largeImageURL="drupal/sites/default/files/styles/juicebox_large/public/photos/Llama%20in%20Machu%20Picchu%2C%20Peru.jpg?itok=m0o0K88Y" thumbURL="drupal/sites/default/files/styles/juicebox_square_thumbnail/public/photos/Llama%20in%20Machu%20Picchu%2C%20Peru.jpg?itok=acfBLfWA" linkURL="drupal/sites/default/files/photos/Llama%20in%20Machu%20Picchu%2C%20Peru.jpg" linkTarget="_blank" juiceboxCompatible="1">
+    <title><![CDATA[Llama in Machu Picchu, Peru]]></title>
     <caption><![CDATA[]]></caption>
   </image>
   <image smallImageURL="drupal/sites/default/files/styles/juicebox_small/public/photos/Woman%20by%20Market%2C%20Peru.JPG?itok=ZVPO2TyH" imageURL="drupal/sites/default/files/styles/juicebox_medium/public/photos/Woman%20by%20Market%2C%20Peru.JPG?itok=YV_LfbhI" largeImageURL="drupal/sites/default/files/styles/juicebox_large/public/photos/Woman%20by%20Market%2C%20Peru.JPG?itok=GMqCY1eD" thumbURL="drupal/sites/default/files/styles/juicebox_square_thumbnail/public/photos/Woman%20by%20Market%2C%20Peru.JPG?itok=uzcyEe07" linkURL="drupal/sites/default/files/photos/Woman%20by%20Market%2C%20Peru.JPG" linkTarget="_blank" juiceboxCompatible="1">
@@ -14,10 +18,6 @@
   </image>
   <image smallImageURL="drupal/sites/default/files/styles/juicebox_small/public/photos/Aguas%20Calientes%2C%20Peru.JPG?itok=ROV3lGuT" imageURL="drupal/sites/default/files/styles/juicebox_medium/public/photos/Aguas%20Calientes%2C%20Peru.JPG?itok=Y8F1eLdN" largeImageURL="drupal/sites/default/files/styles/juicebox_large/public/photos/Aguas%20Calientes%2C%20Peru.JPG?itok=8cqnk3CU" thumbURL="drupal/sites/default/files/styles/juicebox_square_thumbnail/public/photos/Aguas%20Calientes%2C%20Peru.JPG?itok=sslaSDWF" linkURL="drupal/sites/default/files/photos/Aguas%20Calientes%2C%20Peru.JPG" linkTarget="_blank" juiceboxCompatible="1">
     <title><![CDATA[Aguas Calientes, Peru]]></title>
-    <caption><![CDATA[]]></caption>
-  </image>
-  <image smallImageURL="drupal/sites/default/files/styles/juicebox_small/public/photos/Llama%20in%20Machu%20Picchu%2C%20Peru.jpg?itok=dD8juUTM" imageURL="drupal/sites/default/files/styles/juicebox_medium/public/photos/Llama%20in%20Machu%20Picchu%2C%20Peru.jpg?itok=RfK9K6wy" largeImageURL="drupal/sites/default/files/styles/juicebox_large/public/photos/Llama%20in%20Machu%20Picchu%2C%20Peru.jpg?itok=m0o0K88Y" thumbURL="drupal/sites/default/files/styles/juicebox_square_thumbnail/public/photos/Llama%20in%20Machu%20Picchu%2C%20Peru.jpg?itok=acfBLfWA" linkURL="drupal/sites/default/files/photos/Llama%20in%20Machu%20Picchu%2C%20Peru.jpg" linkTarget="_blank" juiceboxCompatible="1">
-    <title><![CDATA[Llama in Machu Picchu, Peru]]></title>
     <caption><![CDATA[]]></caption>
   </image>
 </juicebox>

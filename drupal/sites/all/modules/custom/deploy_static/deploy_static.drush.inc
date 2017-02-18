@@ -12,7 +12,7 @@ function deploy_static_drush_command() {
     'drupal dependencies' => array(),
     'arguments' => array(),
     'examples' => array(
-      'drush deploy_static' => 'Deploy static site.',
+      'drush deploy_static --uri=http://localhost/drupal' => 'Deploy static site.',
     ),
   );
   return $items;
