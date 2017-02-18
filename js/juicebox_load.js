@@ -1,5 +1,16 @@
 // Main gallery loading logic.
 $(function(){
+  // See if this is a close request.
+  if (window.location.hash && window.location.hash == '#close') {
+    if (parent.$.fancybox) {
+      parent.$.fancybox.close();
+    }
+    else {
+      window.location.replace("/#images");
+    }
+    return;
+  }
+  // Otherwise load the gallery based on conf data in query string.
   var vars = [], hash;
   var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
   for (var i = 0; i < hashes.length; i++)
