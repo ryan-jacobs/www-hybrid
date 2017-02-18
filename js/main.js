@@ -95,10 +95,9 @@ $('.navbar-collapse ul li a').click(function() {
   }
 });
 
-// Misc customizations.
+// Frgament management and analytics cutomizations.
 $(function(){
-  // If we load a page with a fragment representing a tab, open that tab and
-  // scroll to the section it's in.
+  // Check if we need to jump to an open tab based on a fragment.
   navTabJump(window.location.hash);
   // If a user clicks on a tab be sure to set the hash in the URL without
   // triggering any scrolling.
@@ -108,22 +107,25 @@ $(function(){
     window.location.hash = this.hash;
     $('html,body').scrollTop(scrollmem);
   });
-  // Quick-and-dirty analytics tracking customizations.
+  // Global click tracking.
   $('a').click(function (e) {
-    // Track internal fragment links as new pageviews.
+    // Internal link logic.
     if (this.host === window.location.host && this.hash) {
+      // Check if the click needs to open a new tab.
+      navTabJump(this.hash);
+      // Track internal fragment links as new pageviews.
       ga('send', 'pageview', location.pathname + this.hash);
     }
-    // Track external links as events.
+    // External link logic.
     else {
+      // Track external links as events.
       ga('send', 'event', 'outbound', 'click', this.href, {'transport': 'beacon'});
     }
-
   });
 });
 
 // Launch fancybox based on selector.
-$(function() { 
+$(function() {
   // Manually launch the fancybox with our own click event so that we can ensure
   // it's only triggered on large-width breakpoints.
   $(".fancybox").click(function() {
