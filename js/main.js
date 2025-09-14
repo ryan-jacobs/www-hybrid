@@ -218,3 +218,9 @@ map.addListener("clickMapObject", function (event) {
     window.location.href = href;
   }
 });
+
+// Image comparison viewer - Load and mount all instances
+const viewers = document.querySelectorAll(".image-compare");
+viewers.forEach((element) => {
+  let view = new ImageCompare(element).mount();
+});
