@@ -145,7 +145,7 @@ var dataProviderUsa = {
     {
       svgPath: backIconSVG,
       id: "backButton",
-      label: "go back to world map",
+      label: "back to world map",
       rollOverColor: "#ffffff",
       labelRollOverColor: "#ffffff",
       labelColor: "#aaaaaa",

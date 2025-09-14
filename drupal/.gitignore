@@ -5,3 +5,6 @@ sites/*/settings*.php
 #sites/*/files
 sites/*/libraries
 sites/*/private
+
+# Ignore any local Drush
+/drush

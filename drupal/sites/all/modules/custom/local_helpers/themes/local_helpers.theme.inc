@@ -78,7 +78,7 @@ function theme_local_helpers_photo_map(&$vars) {
       };      
       var backButton = {
         svgPath: backIconSVG,
-        label: "go back to world map",
+        label: "back to world map",
         rollOverColor: "#ffffff",
         labelRollOverColor: "#ffffff",
         labelColor: "#222222",
